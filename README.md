@@ -1,7 +1,9 @@
 # EnrollMe
+*Documentation by J.C.Parayaoan*
 ---
 ## Description
 In partial fulfillment of academic requirements in ITE 001
+
 
 ## Getting Started
 ### Requirements
@@ -11,7 +13,7 @@ In partial fulfillment of academic requirements in ITE 001
 * [Vcpkg](https://github.com/microsoft/vcpkg)
 * [CrowCpp](https://github.com/CrowCpp/Crow)
 
-## Installation
+## Setup & Installation
 
 <details>
   <summary>
@@ -58,10 +60,28 @@ In order to use vcpkg with Visual Studio, run the following command (may require
 
 </details>
 
-### Add the ff. Environment Variables
+### 1. Add the ff. Environment Variables
 ```pwsh
 $env:VCPKG_ROOT = 'C:\src\vcpkg'
 $env:VCPKG_DEFAULT_TRIPLET = 'x64-windows'
 ```
 
+### 2. Clone the repository
+```pwsh
+git clone https://github.com/iooosef/EnrollMe.git
+```
 
+### 3. Open Visual Studio
+
+### 4. Click `Continue without code →`
+
+### 5. In the Menu Bar, click `File`  → `Open` → `Cmake...`
+
+### 6. Navigate to `.\EnrollMe\` directory, then open `CMakeLists.txt`
+
+### 7. In the **Developer PowerShell` enter the code:
+```pwsh
+cmake -B build -S .\ --preset x64-debug
+```
+
+### 8. Build and run the Project
