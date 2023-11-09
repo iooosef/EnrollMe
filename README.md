@@ -1,5 +1,7 @@
 # EnrollMe
-*Documentation by J.C.Parayaoan*
+
+<span style="font-size: 10px;" > <i> Documentation by J.C.Parayaoan </i> </span>
+
 ---
 ## Description
 In partial fulfillment of academic requirements in ITE 001
@@ -60,28 +62,28 @@ In order to use vcpkg with Visual Studio, run the following command (may require
 
 </details>
 
-### 1. Add the ff. Environment Variables
+#### 1. Add the ff. Environment Variables
 ```pwsh
 $env:VCPKG_ROOT = 'C:\src\vcpkg'
 $env:VCPKG_DEFAULT_TRIPLET = 'x64-windows'
 ```
 
-### 2. Clone the repository
+#### 2. Clone the repository
 ```pwsh
 git clone https://github.com/iooosef/EnrollMe.git
 ```
 
-### 3. Open Visual Studio
+#### 3. Open Visual Studio
 
-### 4. Click `Continue without code →`
+#### 4. Click `Continue without code →`
 
-### 5. In the Menu Bar, click `File`  → `Open` → `Cmake...`
+#### 5. In the Menu Bar, click `File`  → `Open` → `Cmake...`
 
-### 6. Navigate to `.\EnrollMe\` directory, then open `CMakeLists.txt`
+#### 6. Navigate to `.\EnrollMe\` directory, then open `CMakeLists.txt`
 
-### 7. In the **Developer PowerShell` enter the code:
+#### 7. In the **Developer PowerShell` enter the code:
 ```pwsh
 cmake -B build -S .\ --preset x64-debug
 ```
 
-### 8. Build and run the Project
+#### 8. Build and run the Project
