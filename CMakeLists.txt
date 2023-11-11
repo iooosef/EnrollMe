@@ -14,10 +14,14 @@ CACHE STRING "Vcpkg toolchain file")
 
 project ("EnrollMe")
 
+file(GLOB templates "src/templates/*")
+include_directories(templates)
+
+
 find_package(Crow CONFIG REQUIRED)
 
 # Add source to this project's executable.
-add_executable (EnrollMe "EnrollMe.cpp" "EnrollMe.h")
+add_executable (EnrollMe "src/EnrollMe.cpp" "src/EnrollMe.h")
 
 target_link_libraries(EnrollMe PRIVATE Crow::Crow)
 
