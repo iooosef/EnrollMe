@@ -14,16 +14,21 @@ CACHE STRING "Vcpkg toolchain file")
 
 project ("EnrollMe")
 
-file(GLOB templates "src/templates/*")
-include_directories(templates)
-
-
 find_package(Crow CONFIG REQUIRED)
 
 # Add source to this project's executable.
 add_executable (EnrollMe "src/EnrollMe.cpp" "src/EnrollMe.h")
 
 target_link_libraries(EnrollMe PRIVATE Crow::Crow)
+
+add_custom_target(Templates
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/templates
+	COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/src/templates
+    ${CMAKE_BINARY_DIR}/templates
+    )
+
+add_dependencies(EnrollMe Templates)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET EnrollMe PROPERTY CXX_STANDARD 20)
