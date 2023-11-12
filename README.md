@@ -14,34 +14,28 @@ In partial fulfillment of academic requirements in ITE 001
 * [Git](https://git-scm.com/downloads)
 * [Vcpkg](https://github.com/microsoft/vcpkg)
 * [CrowCpp](https://github.com/CrowCpp/Crow)
+* [SQLite ORM](https://github.com/fnc12/sqlite_orm)
 
-## Setup & Installation
+## Setup
 
-<details>
-  <summary>
-    <h3>Visual Studio Installation</h3>
-  </summary>
+### Dependencies Installation
 
-add instructions for instalaltion of VStudio with C++ tools
- 
-</details>
+#### Visual Studio
+Install **Visual Studio 2019 *(or later versions)***
+Include the ff. Workloads:
+* Desktop Development with C++
+* Linux Development with C++
 
-<details>
-  <summary>
-    <h3>Git Installation</h3>
-  </summary>
-
-add instructions for instalaltion of Git
- 
-</details>
+#### Git
+*[Click for instructions in installing Git](https://phoenixnap.com/kb/how-to-install-git-windows)*
 
 <details>
   <summary>
-    <h3>Vcpkg Installation</h3>
+    <h4>Vcpkg Installation</h4>
   </summary>
 
 Vcpkg can be installed anywhere; it is recommended to install in `C:\src\`.
-(*Create* `C:\src\` *directory if it doesn't exist*).
+(*Create `C:\src\` directory if it doesn't exist*).
 
 Clone vcpkg repository.
 ```pwsh
@@ -62,28 +56,35 @@ In order to use vcpkg with Visual Studio, run the following command (may require
 
 </details>
 
-#### 1. Add the ff. Environment Variables
+### Project Setup
+
+1. Enter the ff. code in **Windows Powershell** to set the environment variables:
 ```pwsh
 $env:VCPKG_ROOT = 'C:\src\vcpkg'
 $env:VCPKG_DEFAULT_TRIPLET = 'x64-windows'
 ```
 
-#### 2. Clone the repository
+2. Also enter the ff. code to clone the repository:
 ```pwsh
 git clone https://github.com/iooosef/EnrollMe.git
 ```
 
-#### 3. Open Visual Studio
+3. Open Visual Studio
 
-#### 4. Click `Continue without code →`
+4. Click `Continue without code →`
 
-#### 5. In the Menu Bar, click `File`  → `Open` → `Cmake...`
+5. In the Menu Bar, click `File`  → `Open` → `Cmake...`
 
-#### 6. Navigate to `.\EnrollMe\` directory, then open `CMakeLists.txt`
+6. Navigate to `.\EnrollMe\` directory, then open `CMakeLists.txt`
 
-#### 7. In the **Developer PowerShell` enter the code:
+7. In the **Developer PowerShell** enter the code to install vcpkg dependencies:
+```pwsh
+vcpkg install
+```
+
+8. Also enter the code to generate the build files:
 ```pwsh
 cmake -B build -S .\ --preset x64-debug
 ```
 
-#### 8. Build and run the Project
+9. Build and run the Project
