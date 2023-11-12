@@ -12,10 +12,18 @@ int main()
     //    return "Hello world";
     //    });
 
-    CROW_ROUTE(app, "/<string>")([](std::string name) { 
-        auto page = crow::mustache::load("index.html");
-        crow::mustache::context ctx({ {"person", name} }); 
-        return page.render(ctx); 
+    //CROW_ROUTE(app, "/<string>")([](std::string name) { 
+    //    auto page = crow::mustache::load("index.html");
+    //    crow::mustache::context ctx({ {"person", name} }); 
+    //    return page.render(ctx); 
+    //    });
+
+    CROW_ROUTE(app, "/htmx")(
+        []() {
+            crow::response myResponse(204, "<h1>test</h1><i>hello crow!</i>");  // Example constructor call
+            myResponse.set_header("Content-Type", "text/html");
+            myResponse.add_header("Custom-Header", "Custom-Value");
+            return myResponse;
         });
 
     //set the port, set the app to run on multiple threads, and run the app
