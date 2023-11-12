@@ -15,11 +15,13 @@ CACHE STRING "Vcpkg toolchain file")
 project ("EnrollMe")
 
 find_package(Crow CONFIG REQUIRED)
+find_package(SqliteOrm REQUIRED)
 
 # Add source to this project's executable.
 add_executable (EnrollMe "src/EnrollMe.cpp" "src/EnrollMe.h")
 
 target_link_libraries(EnrollMe PRIVATE Crow::Crow)
+target_link_libraries(EnrollMe PRIVATE sqlite_orm::sqlite_orm)
 
 add_custom_target(Templates
     COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/templates
