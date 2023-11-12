@@ -7,8 +7,7 @@
 In partial fulfillment of academic requirements in ITE 001
 
 
-## Getting Started
-### Requirements
+## Dependencies
 * Windows 10 Operating System (or newer)
 * [Microsoft Visual Studio 2019 (or later versions)](https://visualstudio.microsoft.com/vs/older-downloads/)
 * [Git](https://git-scm.com/downloads)
@@ -20,18 +19,18 @@ In partial fulfillment of academic requirements in ITE 001
 
 ### Dependencies Installation
 
-#### Visual Studio
+### Visual Studio
 Install **Visual Studio 2019 *(or later versions)***
 Include the ff. Workloads:
 * Desktop Development with C++
 * Linux Development with C++
 
-#### Git
+### Git
 *[Click for instructions in installing Git](https://phoenixnap.com/kb/how-to-install-git-windows)*
 
 <details>
   <summary>
-    <h4>Vcpkg Installation</h4>
+    <h3>Vcpkg Installation</h3>
   </summary>
 
 Vcpkg can be installed anywhere; it is recommended to install in `C:\src\`.
