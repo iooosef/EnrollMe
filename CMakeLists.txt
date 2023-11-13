@@ -29,8 +29,15 @@ add_custom_target(Templates
     ${CMAKE_SOURCE_DIR}/src/templates
     ${CMAKE_BINARY_DIR}/templates
     )
+add_custom_target(Static
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/static
+	COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/src/static
+    ${CMAKE_BINARY_DIR}/static
+    )
 
 add_dependencies(EnrollMe Templates)
+add_dependencies(EnrollMe Static)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET EnrollMe PROPERTY CXX_STANDARD 20)
