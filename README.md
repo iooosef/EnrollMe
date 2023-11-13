@@ -14,6 +14,7 @@ In partial fulfillment of academic requirements in ITE 001
 * [Vcpkg](https://github.com/microsoft/vcpkg)
 * [CrowCpp](https://github.com/CrowCpp/Crow)
 * [SQLite ORM](https://github.com/fnc12/sqlite_orm)
+* [htmx](https://github.com/bigskysoftware/htmx)
 
 ## Setup
 
