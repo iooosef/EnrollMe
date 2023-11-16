@@ -1,6 +1,3 @@
-``
-
-
 ##EnrollMe SQL Database Tables
 
 ### `tbl_enrollees`
