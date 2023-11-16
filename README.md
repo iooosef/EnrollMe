@@ -1,7 +1,5 @@
 # EnrollMe
 
-<span style="font-size: 10px;" > <i> Documentation by J.C.Parayaoan </i> </span>
-
 ---
 ## Description
 In partial fulfillment of academic requirements in ITE 001
@@ -88,3 +86,11 @@ cmake -B build -S .\ --preset x64-debug
 ```
 
 9. Build and run the Project
+
+---
+
+<span style="font-size: 10px;" >
+<i> Documentation by Group 8 ITE001 - CS11S2 </i> 
+<br />
+<i> Parayaoan, Joseph Clarence • Clemente, Ken Shelly Charles • Fernandez, Sandrhen • Palaganas, John Michael Dublin</i>
+</span>
