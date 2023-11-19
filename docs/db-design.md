@@ -1,10 +1,12 @@
-##EnrollMe SQL Database Tables
+## EnrollMe SQL Database Tables
 
 ### `tbl_enrollees`
 
 |      type       |         name          | nullable |     key      |    misc     |
 | :-------------: | :-------------------: | :------: | :----------: | :---------: |
 |      *int*      |          id           |          |   ***PK***   | *INCREMENT* |
+|      *int*      |    student_number     |    ✔     |              |             |
+|     *text*      |  enrll_transactionId  |          | ***UNIQUE*** |             |
 | *nvarchar(12)*  |      enrll_type       |          |              |             |
 | *nvarchar(16)*  |      enrll_level      |          |              |             |
 | *nvarchar(16)*  |     enrll_program     |          |              |             |
@@ -44,8 +46,46 @@
 | *nvarchar(16)*  |   grn_mobileNumber    |          |              |             |
 | *nvarchar(16)*  |  grn_telephoneNumber  |    ✔     |              |             |
 | *nvarchar(320)* |       grn_email       |          |              |             |
-|     *text*      |  enrll_transactionId  |          | ***UNIQUE*** |             |
 
+### `tbl_studentNfo`
+
+|      type       |          name           | nullable |   key    | misc  |
+| :-------------: | :---------------------: | :------: | :------: | :---: |
+|      *int*      |     student_number      |          | ***PK*** |       |
+|     *text*      |    student_firstName    |          |          |       |
+|     *text*      |     student_midName     |    ✔     |          |       |
+|     *text*      |    student_lastName     |          |          |       |
+|     *text*      |   student_suffixName    |    ✔     |          |       |
+|  *nvarchar(8)*  |       student_sex       |          |          |       |
+|     *date*      |       student_DoB       |          |          |       |
+|     *text*      |       student_PoB       |    ✔     |          |       |
+|     *text*      |    student_religion     |          |          |       |
+|  *nvarchar(3)*  |   student_nationality   |          |          |       |
+| *nvarchar(12)*  |   student_civilStatus   |          |          |       |
+|     *text*      |     student_country     |          |          |       |
+|     *text*      |    student_province     |          |          |       |
+|     *text*      |     student_cityMun     |          |          |       |
+|     *text*      |      student_brgy       |          |          |       |
+|  *nvarchar(5)*  |     student_zipCode     |    ✔     |          |       |
+|     *text*      |    student_addrLine     |          |          |       |
+| *nvarchar(16)*  |  student_mobileNumber   |          |          |       |
+| *nvarchar(16)*  | student_telephoneNumber |    ✔     |          |       |
+| *nvarchar(320)* |      student_email      |          |          |       |
+|     *text*      |     grdn_firstName      |          |          |       |
+|     *text*      |      grdn_midName       |    ✔     |          |       |
+|     *text*      |      grdn_lastName      |          |          |       |
+|     *text*      |     grdn_suffixName     |    ✔     |          |       |
+|  *nvarchar(8)*  |        grdn_sex         |          |          |       |
+| *nvarchar(32)*  |      grdn_relation      |          |          |       |
+|     *text*      |       grn_country       |          |          |       |
+|     *text*      |      grn_province       |          |          |       |
+|     *text*      |       grn_cityMun       |          |          |       |
+|     *text*      |        grn_brgy         |          |          |       |
+|  *nvarchar(5)*  |       grn_zipCode       |    ✔     |          |       |
+|     *text*      |      grn_addrLine       |          |          |       |
+| *nvarchar(16)*  |    grn_mobileNumber     |          |          |       |
+| *nvarchar(16)*  |   grn_telephoneNumber   |    ✔     |          |       |
+| *nvarchar(320)* |        grn_email        |          |          |       |
 
 ### `tbl_curriculum`
 
@@ -55,17 +95,17 @@
 | *nvarchar(12)* |   course_code   |          | ***PK*** |       |
 |      text      |  course_title   |          |          |       |
 |      int       |      units      |          |          |       |
-| *nvarchar(12)* |  pre-requisite  |          |          |       |
-| *nvarchar(12)* |  co-requisite   |          |          |       |
+| *nvarchar(12)* |  prerequisite   |    ✔     |          |       |
+| *nvarchar(12)* |   corequisite   |    ✔     |          |       |
 
 ### `tbl_course_history`
 
 |      type      |    name     | nullable |   key    |    misc     |    REFERENCES    |
 | :------------: | :---------: | :------: | :------: | :---------: | :--------------: |
 |     *int*      |     id      |          | ***PK*** | *INCREMENT* |                  |
-|     *int*      |  studentId  |          | ***FK*** | *INCREMENT* | tbl_enrollees.id |
+|     *int*      |  studentId  |          | ***FK*** |             | tbl_enrollees.id |
 | *nvarchar(12)* | course_code |          | ***PK*** |             |                  |
-| *nvarchar(12)* |  *remarks*  |          |          |             |                  |
+| *nvarchar(12)* |   remarks   |          |          |             |                  |
 
 ---
 ## Form Options
