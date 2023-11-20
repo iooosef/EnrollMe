@@ -3,7 +3,12 @@
 ```mermaid
     flowchart TD
         start([START])
-        start --> flw1["`**INPUT** tbl_enrollees.enrll_type`"]
+        start --> dclr1{{"`
+                        tbl_enrollees
+                        schoolYear = '2023-2024'
+                        semester = 1
+                        `"}}
+        dclr1 --> flw1["`**INPUT** tbl_enrollees.enrll_type`"]
         flw1 --> if1{"`tbl_enrollees.enrll_type == 'oldStu'`"}
         if1 -- Yes --> flw2Y["`**INPUT** tbl_enrollees.student_number`"]
         if1 -- No --> flw3
@@ -23,29 +28,43 @@
                                tbl_course_history.remarks == 'passed'
                             `"]
         flw7Y --> flw8["`
-                       **AS** @eligible_norequisite_classes
+                       **AS** @eligible_co-n-norequisite_classes
                        **GET ALL** course_code
                        **IN** tbl_curriculum
                        **OF** tbl_enrollees.enrll_program
                        **WHERE**
                        tbl_curriculum.prerequisite **IS BLANK**
                        **AND**
-                       tbl_curriculum.corequisite **IS BLANK**
-                       **AND**
                        course_code **DOES NOT EXIST IN** @passed_classes
                      `"]
         flw8 --> flw9["`
-                       **AS** @eligible_requisite_classes
+                       **AS** @eligible_prerequisite_classes
                        **GET ALL** course_code
                        **IN** tbl_curriculum
                        **OF** tbl_enrollees.enrll_program
                        **WHERE**
-                       (
                         tbl_curriculum.prerequisite **EXIST IN** @passed_classes
-                        **OR**
-                        tbl_curriculum.corequisite **EXIST IN** @passed_classes
-                        )
                        **AND**
                        course_code **DOES NOT EXIST IN** @passed_classes
                      `"]
+        flw9 --> flw10["`
+                        **AS** @eligible_classes
+                        **MERGE**
+                        @eligible_co-n-norequisite_classes
+                        **AND**
+                        @eligible_prerequisite_classes
+                      `"]
+        flw10 --> flw11["`
+                        **USE** @eligible_classes option **FOR** enrll_program
+                        `"]
+        flw11 --> if5{"`enrll_program **HAS** corequisite **AND**  corequisite **EXIST IN** enrll_program`"}
+        if5 -- No --> err1["`**THROW** err`"]
+        err1 --> if5
+        if5 -- Yes --> flw12["`tbl_enrollees.enrll_schoolYear = schoolYear`"]
+        flw12 --> flw13["`tbl_enrollees.enrll_semester = semester`"]
+        flw13 --> flw14["`
+                        **INPUT** remaining
+                        tbl_enrollees fields
+                        `"]
+        flw14 --> flw15["`**GENERATE** enrll_transactionId`"]
 ```
