@@ -58,3 +58,6 @@ test/test_runners
 .vs/*
 
 vcpkg_installed/*
+
+## Docs
+~$*.xlsx
