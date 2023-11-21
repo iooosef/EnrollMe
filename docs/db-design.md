@@ -60,25 +60,25 @@
 |      type       |         name          | nullable |   key    | misc  |
 | :-------------: | :-------------------: | :------: | :------: | :---: |
 |      *int*      |    student_number     |          | ***PK*** |       |
-|     *text*      |    enrll_firstName    |          |          |       |
-|     *text*      |     enrll_midName     |    ✔     |          |       |
-|     *text*      |    enrll_lastName     |          |          |       |
-|     *text*      |   enrll_suffixName    |    ✔     |          |       |
-|  *nvarchar(8)*  |       enrll_sex       |          |          |       |
-|     *date*      |       enrll_DoB       |          |          |       |
-|     *text*      |       enrll_PoB       |    ✔     |          |       |
-|     *text*      |    enrll_religion     |          |          |       |
-|  *nvarchar(3)*  |   enrll_nationality   |          |          |       |
-| *nvarchar(12)*  |   enrll_civilStatus   |          |          |       |
-|     *text*      |     enrll_country     |          |          |       |
-|     *text*      |    enrll_province     |          |          |       |
-|     *text*      |     enrll_cityMun     |          |          |       |
-|     *text*      |      enrll_brgy       |          |          |       |
-|  *nvarchar(5)*  |     enrll_zipCode     |    ✔     |          |       |
-|     *text*      |    enrll_addrLine     |          |          |       |
-| *nvarchar(16)*  |  enrll_mobileNumber   |    ✔     |          |       |
-| *nvarchar(16)*  | enrll_telephoneNumber |    ✔     |          |       |
-| *nvarchar(320)* |      enrll_email      |    ✔     |          |       |
+|     *text*      |    student_firstName    |          |          |       |
+|     *text*      |     student_midName     |    ✔     |          |       |
+|     *text*      |    student_lastName     |          |          |       |
+|     *text*      |   student_suffixName    |    ✔     |          |       |
+|  *nvarchar(8)*  |       student_sex       |          |          |       |
+|     *date*      |       student_DoB       |          |          |       |
+|     *text*      |       student_PoB       |    ✔     |          |       |
+|     *text*      |    student_religion     |          |          |       |
+|  *nvarchar(3)*  |   student_nationality   |          |          |       |
+| *nvarchar(12)*  |   student_civilStatus   |          |          |       |
+|     *text*      |     student_country     |          |          |       |
+|     *text*      |    student_province     |          |          |       |
+|     *text*      |     student_cityMun     |          |          |       |
+|     *text*      |      student_brgy       |          |          |       |
+|  *nvarchar(5)*  |     student_zipCode     |    ✔     |          |       |
+|     *text*      |    student_addrLine     |          |          |       |
+| *nvarchar(16)*  |  student_mobileNumber   |    ✔     |          |       |
+| *nvarchar(16)*  | student_telephoneNumber |    ✔     |          |       |
+| *nvarchar(320)* |      student_email      |    ✔     |          |       |
 |     *text*      |    grdn_firstName     |          |          |       |
 |     *text*      |     grdn_midName      |    ✔     |          |       |
 |     *text*      |     grdn_lastName     |          |          |       |
