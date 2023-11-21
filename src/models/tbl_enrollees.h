@@ -2,7 +2,7 @@
 
 struct tbl_enrollees {
 	int id;
-	std::shared_ptr<int> student_number;
+	std::optional<int> student_number;
 	std::string enrll_transactionId;
 	std::string enrll_type;
 	std::string enrll_level;
@@ -10,12 +10,12 @@ struct tbl_enrollees {
 	std::string enrll_schoolYear;
 	int enrll_semester;
 	std::string enrll_firstName;
-	std::shared_ptr<std::string> enrll_midName;
+	std::optional<std::string> enrll_midName;
 	std::string enrll_lastName;
-	std::shared_ptr<std::string> enrll_suffixName;
+	std::optional<std::string> enrll_suffixName;
 	std::string enrll_sex;
 	std::string enrll_DoB;
-	std::shared_ptr<std::string> enrll_PoB;
+	std::optional<std::string> enrll_PoB;
 	std::string enrll_religion;
 	std::string enrll_nationality;
 	std::string enrll_civilStatus;
@@ -23,19 +23,19 @@ struct tbl_enrollees {
 	std::string enrll_province;
 	std::string enrll_cityMun;
 	std::string enrll_brgy;
-	std::shared_ptr<std::string> enrll_zipCode;
+	std::optional<std::string> enrll_zipCode;
 	std::string enrll_addrLine;
-	std::shared_ptr<std::string> enrll_mobileNumber;
-	std::shared_ptr<std::string> enrll_telephoneNumber;
-	std::shared_ptr<std::string> enrll_email;
+	std::optional<std::string> enrll_mobileNumber;
+	std::optional<std::string> enrll_telephoneNumber;
+	std::optional<std::string> enrll_email;
 	std::string grdn_firstName;
 	std::string grdn_midName;
 	std::string grdn_lastName;
-	std::shared_ptr<std::string> grdn_suffixName;
+	std::optional<std::string> grdn_suffixName;
 	std::string grdn_sex;
 	std::string grdn_relation;
 	std::string grn_address;
 	std::string grn_mobileNumber;
-	std::shared_ptr<std::string> grn_telephoneNumber;
-	std::shared_ptr<std::string> grn_email;
+	std::optional<std::string> grn_telephoneNumber;
+	std::optional<std::string> grn_email;
 };
