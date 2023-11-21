@@ -1,11 +1,8 @@
 #pragma once
 
-struct tbl_curriculum {
+struct tbl_course_history {
 	int id;
+	int student_number;
 	std::string course_code;
-	std::string course_title;
-	int units;
-	std::string prerequisite;
-	std::string corequisite;
-	std::string metadata;
+	std::string remarks;
 };
