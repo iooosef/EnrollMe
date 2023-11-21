@@ -44,17 +44,16 @@
 
 ### `tbl_college_class_enroll`
 
-|      type      |        name         | nullable |     key      |    misc     |
-| :------------: | :-----------------: | :------: | :----------: | :---------: |
-|     *int*      |         id          |          |   ***PK***   | *INCREMENT* |
-|     *text*     | enrll_transactionId |          | ***UNIQUE*** |             |
-|     *int*      |   student_number    |    ✔     |              |             |
-| *nvarchar(16)* |    enrll_program    |          |              |             |
-| *nvarchar(10)* |  enrll_schoolYear   |          |              |             |
-|     *text*     | enrll_transactionId |          | ***UNIQUE*** |             |
-| *nvarchar(12)* |     enrll_type      |          |              |             |
-|     *int*      |   enrll_semester    |          |              |             |
-| *nvarchar(12)* |     course_code     |          |              |             |
+|      type      |        name         | nullable |   key    |    misc     |
+| :------------: | :-----------------: | :------: | :------: | :---------: |
+|     *int*      |         id          |          | ***PK*** | *INCREMENT* |
+|     *text*     | enrll_transactionId |          |          |             |
+|     *int*      |   student_number    |    ✔     |          |             |
+| *nvarchar(16)* |    enrll_program    |          |          |             |
+| *nvarchar(10)* |  enrll_schoolYear   |          |          |             |
+| *nvarchar(12)* |     enrll_type      |          |          |             |
+|     *int*      |   enrll_semester    |          |          |             |
+| *nvarchar(12)* |     course_code     |          |          |             |
 
 ### `tbl_studentNfo`
 
@@ -105,12 +104,12 @@
 
 ### `tbl_course_history`
 
-|      type      |      name      | nullable |   key    |    misc     |    REFERENCES    |
-| :------------: | :------------: | :------: | :------: | :---------: | :--------------: |
-|     *int*      |       id       |          | ***PK*** | *INCREMENT* |                  |
-|     *int*      | student_number |          | ***FK*** |             | tbl_enrollees.id |
-| *nvarchar(12)* |  course_code   |          |          |             |                  |
-| *nvarchar(12)* |    remarks     |          |          |             |                  |
+|      type      |      name      | nullable |   key    |    misc     |
+| :------------: | :------------: | :------: | :------: | :---------: |
+|     *int*      |       id       |          | ***PK*** | *INCREMENT* |
+|     *int*      | student_number |          |          |             |
+| *nvarchar(12)* |  course_code   |          |          |             |
+| *nvarchar(12)* |    remarks     |          |          |             |
 
 ---
 ## Form Options
