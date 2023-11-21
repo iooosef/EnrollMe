@@ -14,7 +14,7 @@ struct tbl_enrollees {
 	std::string enrll_lastName;
 	std::shared_ptr<std::string> enrll_suffixName;
 	std::string enrll_sex;
-	int enrll_DoB;
+	std::string enrll_DoB;
 	std::shared_ptr<std::string> enrll_PoB;
 	std::string enrll_religion;
 	std::string enrll_nationality;
