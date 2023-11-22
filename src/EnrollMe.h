@@ -7,5 +7,6 @@
 
 #include <crow.h>
 #include "data/init_db.h"
+#include "controllers/Home.h"
 
 // TODO: Reference additional headers your program requires here.
