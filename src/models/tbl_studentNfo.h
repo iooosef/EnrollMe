@@ -1,27 +1,26 @@
 #pragma once
 
 struct tbl_studentNfo {
-	int id;
 	std::optional<int> student_number;
-	std::string enrll_firstName;
-	std::optional<std::string> enrll_midName;
-	std::string enrll_lastName;
-	std::optional<std::string> enrll_suffixName;
-	std::string enrll_sex;
-	std::string enrll_DoB;
-	std::optional<std::string> enrll_PoB;
-	std::string enrll_religion;
-	std::string enrll_nationality;
-	std::string enrll_civilStatus;
-	std::string enrll_country;
-	std::string enrll_province;
-	std::string enrll_cityMun;
-	std::string enrll_brgy;
-	std::optional<std::string> enrll_zipCode;
-	std::string enrll_addrLine;
-	std::optional<std::string> enrll_mobileNumber;
-	std::optional<std::string> enrll_telephoneNumber;
-	std::optional<std::string> enrll_email;
+	std::string student_firstName;
+	std::optional<std::string> student_midName;
+	std::string student_lastName;
+	std::optional<std::string> student_suffixName;
+	std::string student_sex;
+	std::string student_DoB;
+	std::optional<std::string> student_PoB;
+	std::string student_religion;
+	std::string student_nationality;
+	std::string student_civilStatus;
+	std::string student_country;
+	std::string student_province;
+	std::string student_cityMun;
+	std::string student_brgy;
+	std::optional<std::string> student_zipCode;
+	std::string student_addrLine;
+	std::optional<std::string> student_mobileNumber;
+	std::optional<std::string> student_telephoneNumber;
+	std::optional<std::string> student_email;
 	std::string grdn_firstName;
 	std::string grdn_midName;
 	std::string grdn_lastName;

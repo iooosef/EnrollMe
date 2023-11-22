@@ -4,7 +4,6 @@ using namespace sqlite_orm;
 void initDb()
 {
 	auto storage = make_storage("db.sqlite",
-
 		make_unique_index("idx_enrollees_enrll_transactionId", 
 			indexed_column(&tbl_enrollees::enrll_transactionId).collate("nocase")
 		),
@@ -40,7 +39,7 @@ void initDb()
 			make_column("grdn_midName", &tbl_enrollees::grdn_midName),
 			make_column("grdn_lastName", &tbl_enrollees::grdn_lastName),
 			make_column("grdn_suffixName", &tbl_enrollees::grdn_suffixName),
-			make_column("grdn_suffixName", &tbl_enrollees::grdn_suffixName),
+			make_column("grdn_sex", &tbl_enrollees::grdn_sex),
 			make_column("grdn_relation", &tbl_enrollees::grdn_relation),
 			make_column("grn_address", &tbl_enrollees::grn_address),
 			make_column("grn_mobileNumber", &tbl_enrollees::grn_mobileNumber),
@@ -49,31 +48,31 @@ void initDb()
 		),
 
 		make_table("tbl_studentNfo",
-			make_column("id", &tbl_studentNfo::id, autoincrement(), primary_key()),
-			make_column("enrll_firstName", &tbl_studentNfo::enrll_firstName),
-			make_column("enrll_midName", &tbl_studentNfo::enrll_midName),
-			make_column("enrll_lastName", &tbl_studentNfo::enrll_lastName),
-			make_column("enrll_suffixName", &tbl_studentNfo::enrll_suffixName),
-			make_column("enrll_sex", &tbl_studentNfo::enrll_sex),
-			make_column("enrll_DoB", &tbl_studentNfo::enrll_DoB),
-			make_column("enrll_PoB", &tbl_studentNfo::enrll_PoB),
-			make_column("enrll_religion", &tbl_studentNfo::enrll_religion),
-			make_column("enrll_nationality", &tbl_studentNfo::enrll_nationality),
-			make_column("enrll_civilStatus", &tbl_studentNfo::enrll_civilStatus),
-			make_column("enrll_country", &tbl_studentNfo::enrll_country),
-			make_column("enrll_province", &tbl_studentNfo::enrll_province),
-			make_column("enrll_cityMun", &tbl_studentNfo::enrll_cityMun),
-			make_column("enrll_brgy", &tbl_studentNfo::enrll_brgy),
-			make_column("enrll_zipCode", &tbl_studentNfo::enrll_zipCode),
-			make_column("enrll_addrLine", &tbl_studentNfo::enrll_addrLine),
-			make_column("enrll_mobileNumber", &tbl_studentNfo::enrll_mobileNumber),
-			make_column("enrll_telephoneNumber", &tbl_studentNfo::enrll_telephoneNumber),
-			make_column("enrll_email", &tbl_studentNfo::enrll_email),
+			make_column("student_number", &tbl_studentNfo::student_number, primary_key()),
+			make_column("student_firstName", &tbl_studentNfo::student_firstName),
+			make_column("student_midName", &tbl_studentNfo::student_midName),
+			make_column("student_lastName", &tbl_studentNfo::student_lastName),
+			make_column("student_suffixName", &tbl_studentNfo::student_suffixName),
+			make_column("student_sex", &tbl_studentNfo::student_sex),
+			make_column("student_DoB", &tbl_studentNfo::student_DoB),
+			make_column("student_PoB", &tbl_studentNfo::student_PoB),
+			make_column("student_religion", &tbl_studentNfo::student_religion),
+			make_column("student_nationality", &tbl_studentNfo::student_nationality),
+			make_column("student_civilStatus", &tbl_studentNfo::student_civilStatus),
+			make_column("student_country", &tbl_studentNfo::student_country),
+			make_column("student_province", &tbl_studentNfo::student_province),
+			make_column("student_cityMun", &tbl_studentNfo::student_cityMun),
+			make_column("student_brgy", &tbl_studentNfo::student_brgy),
+			make_column("student_zipCode", &tbl_studentNfo::student_zipCode),
+			make_column("student_addrLine", &tbl_studentNfo::student_addrLine),
+			make_column("student_mobileNumber", &tbl_studentNfo::student_mobileNumber),
+			make_column("student_telephoneNumber", &tbl_studentNfo::student_telephoneNumber),
+			make_column("student_email", &tbl_studentNfo::student_email),
 			make_column("grdn_firstName", &tbl_studentNfo::grdn_firstName),
 			make_column("grdn_midName", &tbl_studentNfo::grdn_midName),
 			make_column("grdn_lastName", &tbl_studentNfo::grdn_lastName),
 			make_column("grdn_suffixName", &tbl_studentNfo::grdn_suffixName),
-			make_column("grdn_suffixName", &tbl_studentNfo::grdn_suffixName),
+			make_column("grdn_sex", &tbl_studentNfo::grdn_sex),
 			make_column("grdn_relation", &tbl_studentNfo::grdn_relation),
 			make_column("grn_address", &tbl_studentNfo::grn_address),
 			make_column("grn_mobileNumber", &tbl_studentNfo::grn_mobileNumber),
@@ -109,4 +108,6 @@ void initDb()
 			make_column("remarks", &tbl_course_history::remarks)
 		)
 	);
+
+	storage.sync_schema();
 }
