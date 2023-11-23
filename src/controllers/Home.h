@@ -11,5 +11,4 @@ class Home
 		void include_routes(crow::SimpleApp& thisapp);
 	private:
 		void index(crow::SimpleApp& thisapp);
-		void about(crow::SimpleApp& thisapp);
 };
