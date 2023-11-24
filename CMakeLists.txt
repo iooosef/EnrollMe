@@ -47,9 +47,9 @@ target_link_libraries(EnrollMe PUBLIC Crow::Crow)
 target_link_libraries(EnrollMe PRIVATE sqlite_orm::sqlite_orm)
 
 target_sources(EnrollMe PRIVATE "src/EnrollMe.cpp" "src/EnrollMe.h")
-#target_sources(EnrollMe PRIVATE "src/data/init_db.cpp" "src/data/init_db.h")
-#target_sources(EnrollMe PRIVATE "src/controllers/Home.cpp" "src/controllers/Home.h")
-#target_sources(EnrollMe PRIVATE "src/controllers/Enroll.cpp" "src/controllers/Enroll.h")
+target_sources(EnrollMe PRIVATE "src/data/init_db.cpp" "src/data/init_db.h")
+target_sources(EnrollMe PRIVATE "src/controllers/Home.cpp" "src/controllers/Home.h")
+target_sources(EnrollMe PRIVATE "src/controllers/Enroll.cpp" "src/controllers/Enroll.h")
 
 target_include_directories(EnrollMe PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
