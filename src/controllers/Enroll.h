@@ -7,11 +7,11 @@
 
 using Session = crow::SessionMiddleware<crow::FileStore>;
 
-class Home
+class Enroll
 {
 	public:
-		Home();
+		Enroll();
 		void include_routes(crow::App<crow::CookieParser, Session>& thisapp);
 	private:
-		void index(crow::App<crow::CookieParser, Session>& thisapp);
+		void test(crow::App<crow::CookieParser, Session>& thisapp);
 };

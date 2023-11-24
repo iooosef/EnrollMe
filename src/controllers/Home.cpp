@@ -5,13 +5,12 @@ Home::Home()
 	//ctor
 }
 
-void Home::include_routes(crow::SimpleApp& thisapp)
+void Home::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
 {
 	index(thisapp);
-	about(thisapp);
 }
 
-void Home::index(crow::SimpleApp& thisapp)
+void Home::index(crow::App<crow::CookieParser, Session>& thisapp)
 {
     CROW_ROUTE(thisapp, "/")(
         []() {
