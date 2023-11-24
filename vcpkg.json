@@ -1,6 +1,6 @@
 {
   "dependencies": [
-    "crow",
+    "asio",
     "sqlite-orm"
   ]
 }

@@ -14,20 +14,42 @@ CACHE STRING "Vcpkg toolchain file")
 
 project ("EnrollMe")
 
-find_package(Crow CONFIG REQUIRED)
 find_package(SqliteOrm REQUIRED)
+find_package(asio CONFIG REQUIRED)
+
+
+include(FetchContent)
+
+#
+# Crow project configuration variables
+#
+set(CROW_BUILD_EXAMPLES Off)
+set(CROW_BUILD_TOOLS Off)
+set(CROW_BUILD_TESTS Off)
+set(CROW_BUILD_DOCS Off)
+
+# add crow project to the build
+FetchContent_Declare(crow
+  		 GIT_REPOSITORY https://github.com/CrowCpp/Crow.git
+		 GIT_TAG master
+		 )
+
+if(NOT crow_POPULATED)
+  FetchContent_Populate(crow)
+  add_subdirectory(${crow_SOURCE_DIR} ${crow_BINARY_DIR})
+endif(NOT crow_POPULATED)
 
 # Add source to this project's executable.
 add_executable (EnrollMe "src/EnrollMe.h" "src/EnrollMe.cpp")
 
-target_link_libraries(EnrollMe PRIVATE Crow::Crow)
+target_link_libraries(EnrollMe PRIVATE asio::asio)
+target_link_libraries(EnrollMe PUBLIC Crow::Crow)
 target_link_libraries(EnrollMe PRIVATE sqlite_orm::sqlite_orm)
 
 target_sources(EnrollMe PRIVATE "src/EnrollMe.cpp" "src/EnrollMe.h")
-target_sources(EnrollMe PRIVATE "src/middlewares/session.h")
-target_sources(EnrollMe PRIVATE "src/data/init_db.cpp" "src/data/init_db.h")
-target_sources(EnrollMe PRIVATE "src/controllers/Home.cpp" "src/controllers/Home.h")
-target_sources(EnrollMe PRIVATE "src/controllers/Enroll.cpp" "src/controllers/Enroll.h")
+#target_sources(EnrollMe PRIVATE "src/data/init_db.cpp" "src/data/init_db.h")
+#target_sources(EnrollMe PRIVATE "src/controllers/Home.cpp" "src/controllers/Home.h")
+#target_sources(EnrollMe PRIVATE "src/controllers/Enroll.cpp" "src/controllers/Enroll.h")
 
 target_include_directories(EnrollMe PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
@@ -52,5 +74,5 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
 endif()
 
 # TODO: Add tests and install targets if needed.
-list(REMOVE_ITEM _CROW_ICD "_CROW_ICD-NOTFOUND")
-set_target_properties(Crow::Crow PROPERTIES INTERFACE_COMPILE_DEFINITIONS "${_CROW_ICD}")
+#list(REMOVE_ITEM _CROW_ICD "_CROW_ICD-NOTFOUND")
+#set_target_properties(Crow::Crow PROPERTIES INTERFACE_COMPILE_DEFINITIONS "${_CROW_ICD}")
