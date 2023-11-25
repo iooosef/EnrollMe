@@ -6,7 +6,9 @@
 #include <iostream>
 
 #include <crow.h>
+#include <crow/middlewares/session.h>
 #include "data/init_db.h"
 #include "controllers/Home.h"
+#include "controllers/Enroll.h"
 
 // TODO: Reference additional headers your program requires here.
