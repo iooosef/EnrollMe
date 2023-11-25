@@ -9,17 +9,20 @@ Enroll::Enroll()
 
 void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    test(thisapp);
+    EnrollNow(thisapp);
 }
 
 
-void Enroll::test(crow::App<crow::CookieParser, Session>& thisapp)
+void Enroll::EnrollNow(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/test")(
-        []() {
-            crow::response myResponse(200, "<h1>test</h1><i>hello crow!</i>");
-            myResponse.set_header("Content-Type", "text/html");
-            myResponse.add_header("Custom-Header", "Custom-Value");
-            return myResponse;
+    CROW_ROUTE(thisapp, "/EnrollNow")(
+        [&](const crow::request& req) {
+            auto& session = thisapp.get_context<Session>(req);
+            session.set("stu_type", "");
+
+            crow::response page(200);
+            page.set_static_file_info("templates/EnrollNow.html");
+            page.set_header("Content-Type", "text/html");
+            return page;
         });
 }
