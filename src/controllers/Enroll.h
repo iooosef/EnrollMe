@@ -19,4 +19,5 @@ class Enroll
 		void StuLvl_Shs(crow::App<crow::CookieParser, Session>& thisapp);
 		void StuLvl_College(crow::App<crow::CookieParser, Session>& thisapp);
 		void EnrollForm(crow::App<crow::CookieParser, Session>& thisapp);
+		void LogSession(crow::App<crow::CookieParser, Session>& thisapp);
 };
