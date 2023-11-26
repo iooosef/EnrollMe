@@ -26,11 +26,13 @@ int main()
     // Controller objects declaration
     Home home;
     Enroll enroll;
+    Logging log;
     
     initDb(); //initialize the database
     
     home.include_routes(EnrollMeApp);
     enroll.include_routes(EnrollMeApp);
+    log.include_routes(EnrollMeApp);
     
 
     //set the port, set the app to run on multiple threads, and run the app

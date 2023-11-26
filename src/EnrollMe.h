@@ -10,5 +10,6 @@
 #include "data/init_db.h"
 #include "controllers/Home.h"
 #include "controllers/Enroll.h"
+#include "controllers/Logging.h"
 
 // TODO: Reference additional headers your program requires here.
