@@ -30,12 +30,7 @@ void Enroll::StuLvl(crow::App<crow::CookieParser, Session>& thisapp)
             auto& session = thisapp.get_context<Session>(req);
             crow::response page(200);
 
-            // clears all session key-value pairs
-            auto keys = session.keys();
-            for (const auto& key : keys)
-            {
-                session.remove(key);
-            }
+            ClearSession(thisapp, req);
 
             session.set("stu_lvl", "");
             page.set_static_file_info("templates/stuLvl.html");
@@ -168,4 +163,14 @@ void Enroll::EnrollForm(crow::App<crow::CookieParser, Session>& thisapp)
             page.set_header("Content-Type", "text/html");
             return page;
         });
+}
+
+void Enroll::ClearSession(crow::App<crow::CookieParser, Session>& thisapp, const crow::request& req)
+{
+    auto& session = thisapp.get_context<Session>(req);
+    auto keys = session.keys();
+    for (const auto& key : keys)
+    {
+        session.remove(key);
+    }
 }

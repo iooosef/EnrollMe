@@ -27,4 +27,7 @@ class Enroll
 
 		void EnrollForm(crow::App<crow::CookieParser, Session>& thisapp);
 		// POST ROUTES
-};
+
+		// MISC FUNCTIONS
+		void ClearSession(crow::App<crow::CookieParser, Session>& thisapp, const crow::request& req);
+};		

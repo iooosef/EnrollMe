@@ -14,4 +14,6 @@ class Home
 		void include_routes(crow::App<crow::CookieParser, Session>& thisapp);
 	private:
 		void index(crow::App<crow::CookieParser, Session>& thisapp);
+		// MISC FUNCTIONS
+		void ClearSession(crow::App<crow::CookieParser, Session>& thisapp, const crow::request& req);
 };
