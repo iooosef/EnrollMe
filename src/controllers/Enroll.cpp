@@ -16,6 +16,7 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
     StuLvl_College(thisapp);
     EnrollForm(thisapp);
     LogSession(thisapp);
+    StuType(thisapp);
 }
 
 
@@ -44,7 +45,7 @@ void Enroll::StuLvl_Elem(crow::App<crow::CookieParser, Session>& thisapp)
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_type", "elem");
-            res.redirect("/enroll/form");
+            res.redirect("/enroll/type");
             res.end();
         });
 }
@@ -55,7 +56,7 @@ void Enroll::StuLvl_Jhs(crow::App<crow::CookieParser, Session>& thisapp)
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_type", "jhs");
-            res.redirect("/enroll/form");
+            res.redirect("/enroll/type");
             res.end();
         });
 }
@@ -66,7 +67,7 @@ void Enroll::StuLvl_Shs(crow::App<crow::CookieParser, Session>& thisapp)
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_type", "shs");
-            res.redirect("/enroll/form");
+            res.redirect("/enroll/type");
             res.end();
         });
 }
@@ -77,8 +78,32 @@ void Enroll::StuLvl_College(crow::App<crow::CookieParser, Session>& thisapp)
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_type", "college");
-            res.redirect("/enroll/form");
+            res.redirect("/enroll/type");
             res.end();
+        });
+}
+
+void Enroll::StuType(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/type")(
+        [&](const crow::request& req) {
+            crow::response page(200);
+            auto& session = thisapp.get_context<Session>(req);
+            std::string stu_type = session.string("stu_type");
+
+            if (stu_type == "elem" || stu_type == "jhs" || stu_type == "shs") {
+                page.set_static_file_info("templates/stuType-gen.html");
+            }
+			else if (stu_type == "college") {
+                page.set_static_file_info("templates/stuType-college.html");
+			}
+			else {
+				page.redirect("/enroll/type");
+				page.end();
+                return page;
+			}
+            page.set_header("Content-Type", "text/html");
+            return page;
         });
 }
 
