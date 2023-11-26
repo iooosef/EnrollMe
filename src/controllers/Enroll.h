@@ -26,6 +26,5 @@ class Enroll
 		void StuType_OldStu(crow::App<crow::CookieParser, Session>& thisapp);
 
 		void EnrollForm(crow::App<crow::CookieParser, Session>& thisapp);
-		void LogSession(crow::App<crow::CookieParser, Session>& thisapp);
 		// POST ROUTES
 };
