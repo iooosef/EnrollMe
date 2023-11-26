@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EnrollMe</title>
+    <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/css/index.css" rel="stylesheet" />
+    <script src="../static/lib/htmx/htmx.min.js"></script>
+</head>
+<body class="d-flex h-100 text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0">EnrollMe</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link fw-bold py-1 px-0" href="/EnrollNow">Enroll Now</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="px-3">
+            <div class="modal modal-sheet position-static d-block p-4 py-md-5" tabindex="-1" role="dialog" id="modalSignin">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content rounded-4 shadow">
+                        <div class="modal-header p-5 pb-4 border-bottom-0">
+                            <h1 class="fw-bold mb-0 fs-2">Choose your classification</h1>
+                            <a href="/" class="btn-close" aria-label="Close"></a>
+                        </div>
+                        <div class="modal-body p-5 pt-0">
+                            <a href="/enroll/type/freshmen" class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3">
+                                <strong>Freshmen</strong>
+                            </a>
+                            <a href="/enroll/type/tranShft" class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3">
+                                <strong>Transferee/Shiftee</strong>
+                            </a>
+                            <a href="/enroll/type/oldStu" class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3">
+                                <strong>Old Student</strong>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="mt-auto text-black-50">
+            <p>© 2023 Technological Institute of the Philippines - Quezon City - ITE001 CS11S2 - Group 8. <a href="https://github.com/iooosef/EnrollMe" class="text-black">EnrollMe</a> is released under the GNU GPL-2.0 license.</p>
+        </footer>
+    </div>
+
+    <script src="../static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
