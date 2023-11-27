@@ -28,7 +28,6 @@ int main()
     Enroll enroll;
     Logging log;
     
-    initDb(); //initialize the database
     
     home.include_routes(EnrollMeApp);
     enroll.include_routes(EnrollMeApp);
