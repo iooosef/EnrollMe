@@ -66,7 +66,6 @@ add_custom_target(Static
     ${CMAKE_BINARY_DIR}/static
     )
 add_custom_target(Data
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/data
 	COMMAND ${CMAKE_COMMAND} -E copy_directory
             ${CMAKE_SOURCE_DIR}/src/data
             ${CMAKE_BINARY_DIR}/data
