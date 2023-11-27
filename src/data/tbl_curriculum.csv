@@ -1,123 +1,99 @@
-GEC004,Mathematics in the Modern World,3,,,
-GEC001,Understanding the Self,3,,,
-MATH022A,Linear Algebra with MATLAB,2,1,,
-MATH027A,Number Theory,3,,,
-CITE001,Introduction to Computing,2,3,,
-CITE002,Computer Programming 1,2,3,,
-PE101,Physical Education 1,2,,,
-NSTP001,National Service Training Program 1,3,,,
-GEC005,Purposive Communication,3,,,
-GEC003,The Contemporary World,3,,,
-GEC006,Art Appreciation,3,,,
-MATH031,Symbolic Logic,3,,MATH022A,
-MATH018A,Calculus 1,4,,MATH027A,
-CITE 003,Computer Programming 2,2,3,CITE002,
-PE102,Physical Education 2,2,,PE101,
-NSTP002,National Service Training Program 2,3,,NSTP001,
-GEC008,Ethics,3,,,
-GEC002,Readings in Philippine History,3,,,
-MATH019A,Calculus 2,4,,MATH018A,
-CCS201,Object-Oriented Programming,2,3,CITE003,
-CIT306,Mobile Computing,2,3,CITE003,
-CCS202,Principles of Programming Languages,3,,"CITE001, CITE002",
-CCS203,Computer Architecture And Organization,2,3,CITE001,
-PE201,Physical Education 3,2,,PE102,
-GEC007,"Science, Technology and Society",3,,,
-MATH209,Introduction to Numerical Analysis,3,,MATH018A,
-PHYS001C,Calculus-Based Physics 1,3,3,MATH019A,
-MATH025B,Discrete Mathematics,3,,MATH031,
-CCS204,Operating Systems,3,,CCS203,
-CITE004,Data Structures and Algorithm,2,3,CITE003,
-CITE005A,Information Management,2,3,CITE003,
-PE202,Physical Education 4,2,,PE201,
-GEE001B,Ge Elective 1 - Gender and Society,3,,,
-GEM001,Life and Works of Rizal,3,,,
-MATH032,Probability and Statistics,2,3,MATH027A,
-CCS301,Networks and Communications,2,3,CCS204,
-CITE006,Application Development and Emerging Technologies,2,3,CITE005A,
-CCS303,Intelligent Agents,2,3,MATH029,
-CCS304,Automata Theory and Formal Languages,3,,"MATH025B, CITE004",
-CCS305,Software Engineering 1,,,,
-GEE002B,GE Elective 2 - Living in the IT Era,3,,GEE001B,
-CHM001,Chemistry for Engineers,3,3,,
-CITE008,Social Issues and Professional Practice,3,,3rdYrStanding,
-CITE007,Information Assurace and Security,3,,CITE005A,
-CCS401,Thesis 1,2,3,CCS308,CITE009
-CSFELEC001,Free Elective,3,,,
-CSELEC003,CCS Elective 3,2,3,CSELEC002,
-CCS402,Intership in Computing,,9,CCS 308,
-CCS403,Thesis 2,,9,CCS 401,
-GEC002,Readings in Philippine History,3,,,
-MATH022,Linear Algebra,3,,,
-PE101,Physical Education 1,2,,,
-NSTP001,National Service Training Program,3,,,
-GEC005,Purposive Communication,3,,,
-GEC006,Art Appreciation,3,,,
-MATH025,Discrete Mathematics,3,,,
-CITE003,Computer Programming 2,3,,CITE002,
-CITE012,Introduction to Human Computer Interaction,2,,CITE002,
-PE102,Physical Education 2,2,,PE101,
-NSTP002,National Service Training Program 2,3,,NSTP001,
-PELEC001,Prof. Elective 1,2,3,"CITE003, CITE012",
-CIT202,Web Systems and Technologies,2,3,"CITE003, CITE012",
-CIT201,Systems Analysis and Design,2,3,,
-GEC008,Ethics,3,,,
-GEC007,"Science, Technology and Society",3,,,
-PE201,Physical Education 3,2,,Pe102,
-GEM001,Life and Works of Rizal,3,,,
-GEC003,The Contemporary World,3,,,
-MATH028,Applied Statistics,2,3,MATH022,
-CITE005A,Informaation Management,2,3,"CITE003, CITE004",
-PELEC002,Prof. Elective 2,2,3,,
-CIT203,Platform Technologies,2,3,CITE004,
-CHM001A,Chemistry,2,3,,
-PE202,Physical Education 4,2,,PE201,
-GEE001B,GE Elective 1 - Gender and Society,3,,,
-ITELEC001,IT Elective 1,2,3,,
-CIT301,Integrative Programming and Technologies,2,3,"CIT202, CITE005A",
-CIT302,Quantitative Methods(incModeling and Simulation,2,3,"MATH025, MATH028",
-CIT303,Networking 1,2,3,"CIT202, CIT203",
-CIT304,Advance Database Systems,2,3,CITE005A,
-CIT305,Systems Integration and Architecture 1,2,3,CIT202,CIT303
-CITE009,Technopreneurship,3,,3rdYrStanding,
-GEE002B,GE Elective 2 - Living in the IT Era,3,,GEE001B,
-CIS202,Data Mining and Warehousing,2,3,"MATH028, CIT304",
-CIT306,Mobile Computing,2,3,"CITE003, CIT304",
-PELEC003,Prof. Elective 3,2,3,,
-ITELEC002,IT Elective 2,2,3,ITELEC001,
-CITE007A,Information Assurance and Security 1,2,3,CIT304,
-CIT307,Networking 2,2,3,CIT303,
-CIT308,Capstone 1,2,3,"CITE006, CITE007A",
-CIT309,IT Project Management,2,3,CITE006,
-CIT310,Information Assurance and Security 2,2,3,CITE007,
-GEE004,GE Elective 3 - Great Books,3,,GEE002B,
-PELEC004,Prof. Elective 4,2,3,,
-ITELEC,IT Elective 3,2,3,ITELEC002,
-CIT400,Capstone 2,,3,CIT308,
-CITE008,Social Issues and Professional Practice,3,,3rdYrStanding,
-CIT401,Systems Administration and Maintenance,2,3,CIT310,
-CIT402,Intership in Computing,,6,Graduating,
-ITELEC004,IT Elective 4,2,3,ITELEC003,
-CIT403,Systems Integration and Architecture 2,2,3,"CIT307, CIT305, CIT401",
-CAM401,"3D Modelling, Texturing, Rendering and Lighting",2,3,3rdYrStanding,
-CAM402,3D Animation and Special Effects,2,3,CAM401,
-CAM403,3D Post Production and Compositiong,2,3,CAM402,
-CAM404,Mobile Development Integration,2,3,CAM403,
-CBS401A,Network Security,2,3,3rdYrStanding,
-CBS402A,Data and Application Security,2,3,CBS401A,
-CBS403,Ethical Hacking and Penetration Testing,2,3,CBS402A,
-CBS404A,Cyber Threat Analysis and Modelling,2,3,CBS403,
-CIT401A,Fundamentals of Bus Analystics,2,3,3rdYrStanding,
-CIT402A,"Analytics, Techniques and Tools",2,3,CIT401A,
-CIT403A,Fundamentals of Predictive Analytics,2,3,CIT402A,
-CIT404A,Fundamental of Prescriptive Analytics,2,3,CIT403A,
-CIT503,Current Trends and Issues in Computing,3,,,
-CIT504,SAP/ SAS,2,3,CIT309,
-CIT505,Event Driven Programming,2,3,CITE004,
-FLE213,Spanish,2,3,,
-FLE313,Mandarin,2,3,,
-CIT506,Introductiong to Game Development,2,3,CITE012,
-CIT508,Object-Oriented Programming,2,3,CITE003,
-CIT509,Human Computer Interaction 2,2,3,CITE012,
-CIT510,Integrative Programming and Technologies 2,2,3,CIT301,
-CIT511,Web Systems and Technologies 2,2,3,CIT202,
+GenEd$GEC001$Understanding the Self$3$$$$$
+GenEd$GEC002$Readings in Philippine History$3$$$$$
+GenEd$GEC003$The Contemporary World$3$$$$$
+GenEd$GEC004$Mathematics in the Modern World$3$$$$$
+GenEd$GEC005$Purposive Communication$3$$$$$
+GenEd$GEC006$Art Appreciation$3$$$$$
+GenEd$GEC007$Science, Technology and Society$3$$$$$
+GenEd$GEC008$Ethics$3$$$$$
+GenEd$GEE001B$GE Elective 1 - Gender and Society$3$$$$$
+GenEd$GEE002B$GE Elective 2 - Living in the IT Era$3$$GEE001B$$$
+GenEd$GEE004$GE Elective 3 - Great Books$3$$GEE002B$$$
+GenEd$GEM001$Life and Works of Rizal$3$$$$$
+GenEd$NSTP001$National Service Training Program$3$$$$$
+GenEd$NSTP002$National Service Training Program 2$3$$NSTP001$$$
+GenEd$PE101$Physical Education 1$2$$$$$
+GenEd$PE102$Physical Education 2$2$$PE101$$$
+GenEd$PE201$Physical Education 3$2$$PE102$$$
+GenEd$PE202$Physical Education 4$2$$PE201$$$
+BSCS2018$MATH013$Linear Algebra with MATLAB$2$1$$$$
+BSCS2018$MATH014$Number Theory$3$$$$$
+BSCS2018$CS001$Introduction to Computing$3$$$$$
+BSCS2018$ITE001$Computer Programming 1$2$1$$$$
+BSCS2018$MATH015$Symbolic Logic$3$$MATH014$$$
+BSCS2018$ITE012$Computer Programing 2$2$1$ITE001$$$
+BSCS2018$MATH007$Differential Calculus$4$$MATH013$$$
+BSCS2018$CS409$Mobile Computing$2$1$ITE001$$$
+BSCS2018$CS200$Principles of Programming Languages$3$$CS001,ITE001$$$
+BSCS2018$CS003$Computer Architecture and Organization$2$1$CS001$$$
+BSCS2018$MATH008$Integral Calculus$4$$MATH007$$$
+BSCS2018$CS002$Advanced Object-Oriented Programming$2$1$ITE012$$$
+BSCS2018$MATH012A$Introduction to Numerical Analysis$3$$MATH007$$$
+BSCS2018$PHYS001C$Calculus-Based Physics (Physics for Engineers)$3$1$MATH008$$$
+BSCS2018$MATH006$Discrete Mathematics$3$$MATH015$$$
+BSCS2018$ITE005$Operating Systems$3$$CS003$$$
+BSCS2018$ITE014$Information Management$2$1$ITE012$$$
+BSCS2018$CS201A$Data Structures and Algorithms Analysis$3$1$CS001,CS002$$$
+BSCS2018$MATH009CS$Probability and Statistics (w/ Lab)$2$1$MATH014$$$
+BSCS2018$CS004$Network Communications$2$1$ITE005$$$
+BSCS2018$ITE013$Application Development and Emerging Technologies$2$1$CS409$$$
+BSCS2018$CS403$Intelligent Agents$2$1$MATH012A$$$
+BSCS2018$CS300$Automata Theory and Formal Languages$3$$CS201A,MATH006$$$
+BSCS2018$CS301$Software Engineering 1$2$1$ITE014$$$
+BSCS2018$CHEM001C$Chemistry for Engineers$3$1$$$$
+BSCS2018$ITE015$Social Issues and Professional Practice$3$$CS301$ITE010A$$
+BSCS2018$CS302$Modeling and Simulation$2$1$CS403,MATH009CS$$$
+BSCS2018$CS006$Algorithms and Complexity$3$$CS300,MATH012A$$$
+BSCS2018$CSELEC001$CS Elective 1$2$1$$$$
+BSCS2018$ITE010A$Human Computer Interaction$2$1$ITE013$$$
+BSCS2018$CS005$Information Assurance and Security$2$1$CS004,ITE014$$$
+BSCS2018$CS304$Software Engineering 2$2$1$CS302,ITE015$$$
+BSCS2018$CS007$Parallel and Distributed Computing$2$1$CS004$$$
+BSCS2018$CSELEC002$CS Elective 2$2$1$$$$
+BSCS2018$TECH101$Technopreneurship$3$$ITE015$$$
+BSCS2018$FELEC001$Free Elective$2$1$$$$
+BSCS2018$CSELEC003$CS Elective 3$2$1$$$$
+BSCS2018$CS307$Thesis 1$2$1$CS304,TECH101$$$
+BSCS2018$CS402$Internship in Computing$$3$CS304$$$
+BSCS2018$CS401$Thesis 2$0$3$CS307$$$
+BSIT2018$CITE001$Introduction to Computing$2$1$$$$
+BSIT2018$CITE002$Computer Programming 1$2$1$$$$
+BSIT2018$MATH022$Linear Algebra$3$$$$$
+BSIT2018$MATH025$Discrete Mathematics$3$$$$$
+BSIT2018$CITE003$Computer Programming 2$2$1$CITE002$$$
+BSIT2018$CITE012$Introduction to Human Computer Interaction$2$1$CITE002$$$
+BSIT2018$CITE004$Data Structures and Algorithms$2$1$CITE003$$$
+BSIT2018$PELEC001$Prof. Elective 1$2$1$$$$
+BSIT2018$CIT202$Web Systems and Technologies$2$1$CITE003,CITE012$$$
+BSIT2018$CIT201$Systems Analysis and Design$2$1$CITE003,CITE012$$$
+BSIT2018$BIO001A$Modern Biology$2$1$$$$
+BSIT2018$MATH028$Applied Statistics$2$1$MATH022$$$
+BSIT2018$CITE005A$Information Management$2$1$CITE003,CITE004$$$
+BSIT2018$PELEC002$Prof. Elective 2$2$1$PELEC001$$$
+BSIT2018$CIT203$Platform Technologies$2$1$CITE004$$$
+BSIT2018$CHEM001A$Chemistry$2$1$$$$
+BSIT2018$ITELEC001$IT Elective 1$2$1$$$$
+BSIT2018$CIT301$Integrative Programming and Technologies$2$1$CIT202,CITE005A$$$
+BSIT2018$CIT302$Quantitative Methods (incl. Modeling & Simulation)$2$1$MATH025,MATH028$$$
+BSIT2018$CIT303$Networking 1$2$1$CIT202,CIT203$$$
+BSIT2018$CIT304$Advanced Database Systems$2$1$CITE005A$$$
+BSIT2018$CITE009$Technopreneurship$2$1$3RDYRSTAN$$$
+BSIT2018$CIT305$Systems Integration and Architecture$2$1$CIT202$CIT303$$
+BSIT2018$CIS202$Data Mining and Warehousing$2$1$MATH028,CIT304$$$
+BSIT2018$CIT306$Mobile Computing$2$1$CITE003,CIT304$$$
+BSIT2018$PELEC003$Prof. Elective 3$2$1$PELEC002$$$
+BSIT2018$ITELEC002$IT Elective 2$2$1$ITELEC001$$$
+BSIT2018$CITE007A$Information Assurance and Security 1$2$1$CIT304$$$
+BSIT2018$CITE006$Application Development and Emerging Technologies$2$1$CITE005A$$$
+BSIT2018$CIT307$Networking 2$2$1$CIT303$$$
+BSIT2018$CIT308$Capstone 1$2$1$CITE006,CITE007A$$$
+BSIT2018$CIT309$IT Project Management$2$1$CITE006$$$
+BSIT2018$CIT310$Information Assurance and Security 2$2$1$CITE007A$$$
+BSIT2018$PELEC004$Prof. Elective 4$2$1$PELEC003$$$
+BSIT2018$ITELEC003$IT Elective 3$2$1$ITELEC002$$$
+BSIT2018$CIT400$Capstone 2$$3$CIT308$$$
+BSIT2018$CITE008$Social Issues and Professional Practice$3$$3RDYRSTAN$$$
+BSIT2018$CIT401$Systems Administration and Maintenance$2$1$CIT310$$$
+BSIT2018$CIT402$Internship in Computing$0$3$GRADUATING$$$
+BSIT2018$ITELEC004$IT Elective 4$2$1$ITELEC003$$$
+BSIT2018$CIT403$Systems Integration and Architecture 2$2$1$CIT307,CIT305,CIT401$$$
