@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <vector>
 
 #include <sqlite3.h>
 
@@ -17,7 +18,7 @@
 class Database
 {
 	public:
-		Database(std::string& dbPath);
+		Database(const char* dbPath);
 		~Database();
 		bool openDB();
 		bool closeDB();
@@ -25,6 +26,6 @@ class Database
 		bool initEnrollMeTables();
 		bool seedTblCurriculum();
 	private:
-		std::string dbName_;
+		const char* dbName_;
 		sqlite3* db_;
 };

@@ -1,7 +1,7 @@
 #include "Database.h"
 
 // ctor
-Database::Database(std::string& dbPath) :  dbName_(dbPath), db_(nullptr) { }
+Database::Database(const char* dbPath) :  dbName_(dbPath), db_(nullptr) { }
 // dtor
 Database::~Database() 
 {
@@ -13,7 +13,7 @@ Database::~Database()
 
 bool Database::openDB()
 {
-	int returnCode = sqlite3_open(dbName_.c_str(), &db_);
+	int returnCode = sqlite3_open(dbName_, &db_);
 	if (returnCode != SQLITE_OK)
 	{
 		std::cout << "Error opening database: " << sqlite3_errmsg(db_) << std::endl;
