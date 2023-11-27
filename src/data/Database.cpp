@@ -110,7 +110,8 @@ bool Database::initEnrollMeTables()
 
 	const std::string create_tbl_curriculum = "CREATE TABLE IF NOT EXISTS tbl_curriculum ("
 											  "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-											  "course_code TEXT NOT NULL UNIQUE,"
+											  "curriculum TEXT NOT NULL,"
+											  "course_code TEXT NOT NULL,"
 											  "course_title TEXT NOT NULL,"
 											  "lecture_units INTEGER,"
 											  "lab_units INTEGER,"
@@ -175,8 +176,78 @@ bool Database::initEnrollMeTables()
 	return true;
 }
 
-bool seedTblCurriculum()
+bool Database::seedTblCurriculum()
 {
+	{
+		// reset tbl_curriculum
+		std::string resetQuery = "DELETE FROM tbl_curriculum";
+		int returnCode = sqlite3_exec(db_, resetQuery.c_str(), NULL, NULL, NULL);
+		if (returnCode != SQLITE_OK)
+		{
+			std::cout << "Error resetting table tbl_curriculum: " << sqlite3_errmsg(db_) << std::endl;
+			return false;
+		}
+	}
 
+	// insert data into tbl_curriculum
+	std::ifstream file("./data/tbl_curriculum.csv");
+	if (!file.is_open())
+	{
+		std::cout << "Error opening file tbl_curriculum.csv" << std::endl;
+		return false;
+	}
+
+	std::string line;
+
+	while (std::getline(file, line)) // read line by line
+	{
+		std::istringstream iss(line);
+		std::string value;
+
+		std::vector<std::string> values;
+
+		while (std::getline(iss, value, '$'))
+		{
+			values.push_back(value);
+		}
+
+		std::string seedQuery = "INSERT INTO tbl_curriculum ("
+							    "curriculum, course_code, course_title, lecture_units, lab_units,"
+							    "prerequisite, corequisite, metadata )"
+								"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		sqlite3_stmt* stmt;
+
+		if (sqlite3_prepare_v2(db_, seedQuery.c_str(), -1, &stmt, NULL) != SQLITE_OK)
+		{
+			std::cout << "Error preparing statement: " << sqlite3_errmsg(db_) << std::endl;
+			return false;
+		}
+
+		for (int i = 0; i < 8; i++)
+		{
+			if (sqlite3_bind_text(stmt, i + 1, values[i].c_str(), -1, SQLITE_STATIC) != SQLITE_OK)
+			{
+				std::cout << "Error binding value: " << sqlite3_errmsg(db_) << std::endl;
+				return false;
+			}
+		}
+		std::cout << "Added values for " << values[0] << " - " << values[1] << std::endl;
+
+		// Execute the statement
+		if (sqlite3_step(stmt) != SQLITE_DONE) {
+			std::cerr << "Error executing statement." << std::endl;
+			return false;
+		}
+
+		// Finalize the statement
+		if (sqlite3_finalize(stmt) != SQLITE_OK) {
+			std::cerr << "Cannot finalize statement." << std::endl;
+			return false;
+		}
+
+		std::cout << std::endl;
+	}
+
+	file.close();
 	return true;
 }
