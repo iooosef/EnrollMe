@@ -1,4 +1,5 @@
 #pragma once
+#include <optional>
 
 struct tbl_enrollees {
 	int id;

@@ -1,4 +1,5 @@
 #pragma once
+#include <optional>
 
 struct tbl_studentNfo {
 	std::optional<int> student_number;
