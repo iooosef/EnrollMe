@@ -65,14 +65,23 @@ add_custom_target(Static
     ${CMAKE_SOURCE_DIR}/src/static
     ${CMAKE_BINARY_DIR}/static
     )
+add_custom_target(Data
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/data
+	COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_SOURCE_DIR}/src/data
+            ${CMAKE_BINARY_DIR}/data
+    COMMAND ${CMAKE_COMMAND} -E remove
+            ${CMAKE_BINARY_DIR}/data/Database.cpp
+            ${CMAKE_BINARY_DIR}/data/Database.h
+    )
 
 add_dependencies(EnrollMe Templates)
 add_dependencies(EnrollMe Static)
+add_dependencies(EnrollMe Data)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET EnrollMe PROPERTY CXX_STANDARD 20)
 endif()
 
-# TODO: Add tests and install targets if needed.
 #list(REMOVE_ITEM _CROW_ICD "_CROW_ICD-NOTFOUND")
 #set_target_properties(Crow::Crow PROPERTIES INTERFACE_COMPILE_DEFINITIONS "${_CROW_ICD}")
