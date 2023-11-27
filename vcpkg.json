@@ -1,6 +1,6 @@
 {
   "dependencies": [
     "asio",
-    "sqlite-orm"
+    "sqlite3"
   ]
 }

@@ -14,11 +14,10 @@ CACHE STRING "Vcpkg toolchain file")
 
 project ("EnrollMe")
 
-find_package(SqliteOrm REQUIRED)
-find_package(asio CONFIG REQUIRED)
-
-
 include(FetchContent)
+
+find_package(asio CONFIG REQUIRED)
+find_package(unofficial-sqlite3 CONFIG REQUIRED)
 
 #
 # Crow project configuration variables
@@ -44,10 +43,10 @@ add_executable (EnrollMe "src/EnrollMe.h" "src/EnrollMe.cpp")
 
 target_link_libraries(EnrollMe PRIVATE asio::asio)
 target_link_libraries(EnrollMe PUBLIC Crow::Crow)
-target_link_libraries(EnrollMe PRIVATE sqlite_orm::sqlite_orm)
+target_link_libraries(EnrollMe PRIVATE unofficial::sqlite3::sqlite3)
 
 target_sources(EnrollMe PRIVATE "src/EnrollMe.cpp" "src/EnrollMe.h")
-target_sources(EnrollMe PRIVATE "src/data/init_db.cpp" "src/data/init_db.h")
+target_sources(EnrollMe PRIVATE "src/data/Database.cpp" "src/data/Database.h")
 target_sources(EnrollMe PRIVATE "src/controllers/Home.cpp" "src/controllers/Home.h")
 target_sources(EnrollMe PRIVATE "src/controllers/Enroll.cpp" "src/controllers/Enroll.h")
 target_sources(EnrollMe PRIVATE "src/controllers/Logging.cpp" "src/controllers/Logging.h")
