@@ -167,17 +167,17 @@
 
                         <div class="col-md-4">
                             <label for="enrll-mobileNumber" class="form-label">Mobile Number</label>
-                            <input type="text" name="enrll_mobileNumber" class="form-control" id="enrll-mobileNumber">
+                            <input type="tel" name="enrll_mobileNumber" class="form-control" id="enrll-mobileNumber" pattern="[0-9]{11,12}">
                         </div>
 
                         <div class="col-md-4">
                             <label for="enrll-telephoneNumber" class="form-label">Telephone Number</label>
-                            <input type="text" name="enrll_telephoneNumber" class="form-control" id="enrll-telephoneNumber">
+                            <input type="tel" name="enrll_telephoneNumber" class="form-control" id="enrll-telephoneNumber" pattern="[0-9]{10}">
                         </div>
 
                         <div class="col-md-4">
                             <label for="enrll-email" class="form-label">Email</label>
-                            <input type="text" name="enrll_email" class="form-control" id="enrll-email">
+                            <input type="email" name="enrll_email" class="form-control" id="enrll-email">
                         </div>
 
                         <hr class="mt-5">
@@ -240,7 +240,7 @@
 
                         <div class="col-md-4">
                             <label for="grdn-mobileNumber" class="form-label">Mobile Number</label>
-                            <input type="text" name="grdn_mobileNumber" class="form-control" id="grdn-mobileNumber" required>
+                            <input type="text" name="grdn_mobileNumber" class="form-control" id="grdn-mobileNumber" required pattern="[0-9]{11,12}">
                             <div class="invalid-feedback">
                                 Guardian's mobile number is required.
                             </div>
@@ -248,12 +248,12 @@
 
                         <div class="col-md-4">
                             <label for="grdn-telephoneNumber" class="form-label">Telephone Number</label>
-                            <input type="text" name="grdn_telephoneNumber" class="form-control" id="grdn-telephoneNumber">
+                            <input type="text" name="grdn_telephoneNumber" class="form-control" id="grdn-telephoneNumber" pattern="[0-9]{10}">
                         </div>
 
                         <div class="col-md-4">
                             <label for="grdn-email" class="form-label">Email</label>
-                            <input type="text" name="grdn_email" class="form-control" id="grdn-email">
+                            <input type="email" name="grdn_email" class="form-control" id="grdn-email">
                         </div>
 
                         <hr class="mt-5">
