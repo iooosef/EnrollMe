@@ -29,7 +29,7 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
 
 void Enroll::StuLvl(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/level")(
+    CROW_ROUTE(thisapp, "/enroll/level").methods(crow::HTTPMethod::GET)(
         [&](const crow::request& req) {
             auto& session = thisapp.get_context<Session>(req);
             crow::response page(200);
@@ -45,7 +45,7 @@ void Enroll::StuLvl(crow::App<crow::CookieParser, Session>& thisapp)
 
 void Enroll::StuLvl_Elem(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/level/elementary")(
+    CROW_ROUTE(thisapp, "/enroll/level/elementary").methods(crow::HTTPMethod::GET)(
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_lvl", "elem");
@@ -56,7 +56,7 @@ void Enroll::StuLvl_Elem(crow::App<crow::CookieParser, Session>& thisapp)
 
 void Enroll::StuLvl_Jhs(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/level/jhs")(
+    CROW_ROUTE(thisapp, "/enroll/level/jhs").methods(crow::HTTPMethod::GET)(
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_lvl", "jhs");
@@ -67,7 +67,7 @@ void Enroll::StuLvl_Jhs(crow::App<crow::CookieParser, Session>& thisapp)
 
 void Enroll::StuLvl_Shs(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/level/shs")(
+    CROW_ROUTE(thisapp, "/enroll/level/shs").methods(crow::HTTPMethod::GET)(
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_lvl", "shs");
@@ -78,7 +78,7 @@ void Enroll::StuLvl_Shs(crow::App<crow::CookieParser, Session>& thisapp)
 
 void Enroll::StuLvl_College(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/level/college")(
+    CROW_ROUTE(thisapp, "/enroll/level/college").methods(crow::HTTPMethod::GET)(
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_lvl", "college");
@@ -89,7 +89,7 @@ void Enroll::StuLvl_College(crow::App<crow::CookieParser, Session>& thisapp)
 
 void Enroll::StuType(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/type")(
+    CROW_ROUTE(thisapp, "/enroll/type").methods(crow::HTTPMethod::GET)(
         [&](const crow::request& req) {
             crow::response page(200);
             auto& session = thisapp.get_context<Session>(req);
@@ -114,7 +114,7 @@ void Enroll::StuType(crow::App<crow::CookieParser, Session>& thisapp)
 
 void Enroll::StuType_NewStu(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/type/newStu")(
+    CROW_ROUTE(thisapp, "/enroll/type/newStu").methods(crow::HTTPMethod::GET)(
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_type", "newStu");
@@ -125,7 +125,7 @@ void Enroll::StuType_NewStu(crow::App<crow::CookieParser, Session>& thisapp)
 
 void Enroll::StuType_Freshmen(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/type/freshmen")(
+    CROW_ROUTE(thisapp, "/enroll/type/freshmen").methods(crow::HTTPMethod::GET)(
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_type", "freshmen");
@@ -136,7 +136,7 @@ void Enroll::StuType_Freshmen(crow::App<crow::CookieParser, Session>& thisapp)
 
 void Enroll::StuType_TranShft(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/type/tranShft")(
+    CROW_ROUTE(thisapp, "/enroll/type/tranShft").methods(crow::HTTPMethod::GET)(
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_type", "tranShft");
@@ -147,7 +147,7 @@ void Enroll::StuType_TranShft(crow::App<crow::CookieParser, Session>& thisapp)
 
 void Enroll::StuType_OldStu(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/type/oldStu")(
+    CROW_ROUTE(thisapp, "/enroll/type/oldStu").methods(crow::HTTPMethod::GET)(
         [&](const crow::request& req, crow::response& res) {
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_type", "oldStu");
@@ -158,7 +158,7 @@ void Enroll::StuType_OldStu(crow::App<crow::CookieParser, Session>& thisapp)
 
 void Enroll::EnrollForm(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/form")(
+    CROW_ROUTE(thisapp, "/enroll/form").methods(crow::HTTPMethod::GET)(
         [&](const crow::request& req) {
             crow::response page(200);
             auto& session = thisapp.get_context<Session>(req);
