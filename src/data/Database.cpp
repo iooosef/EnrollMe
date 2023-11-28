@@ -256,3 +256,35 @@ bool Database::seedTblCurriculum()
 	file.close();
 	return true;
 }
+
+std::vector<std::vector<std::string>> Database::executeSelect(const std::string& query)
+{
+	std::vector<std::vector<std::string>> result;
+
+	if (db_ == nullptr) {
+		std::cerr << "Database not open." << std::endl;
+		return result;
+	}
+
+	sqlite3_stmt* statement;
+	if (sqlite3_prepare_v2(db_, query.c_str(), -1, &statement, nullptr) != SQLITE_OK) {
+		std::cerr << "Failed to prepare statement: " << sqlite3_errmsg(db_) << std::endl;
+		return result;
+	}
+
+	int columns = sqlite3_column_count(statement);
+
+	while (sqlite3_step(statement) == SQLITE_ROW) {
+		std::vector<std::string> row;
+
+		for (int i = 0; i < columns; ++i) {
+			const char* value = reinterpret_cast<const char*>(sqlite3_column_text(statement, i));
+			row.push_back(value ? value : "");
+		}
+
+		result.push_back(row);
+	}
+
+	sqlite3_finalize(statement);
+	return result;
+}
