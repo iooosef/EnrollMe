@@ -85,8 +85,12 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label for="enrll-nationality" class="form-label">Nationality</label>
-                            <select class="form-select" name="enrll_nationality" id="enrll-nationality" required>
+                            <label for="enrll-nationality" class="form-label" id="testing">Nationality</label>
+                            <select class="form-select" name="enrll_nationality" id="enrll-nationality" required
+                                    hx-get="/enroll/getNationalities"
+                                    hx-trigger="click once"
+                                    hx-target="#enrll-nationality"
+                                    hx-swap="innerHTML">
                                 <option value="">Select Nationality</option>
                             </select>
                             <div class="invalid-feedback">
@@ -112,7 +116,13 @@
 
                         <div class="col-md-6">
                             <label for="enrll-country" class="form-label">Country</label>
-                            <input type="text" name="enrll_country" class="form-control" id="enrll-country" required>
+                            <select name="enrll_country" class="form-control" id="enrll-country" required
+                                    hx-get="/enroll/getCountries"
+                                    hx-trigger="click once"
+                                    hx-target="#enrll-country"
+                                    hx-swap="innerHTML">
+                                <option value="">Select Country</option>
+                            </select>
                             <div class="invalid-feedback">
                                 Enrollee's country is required.
                             </div>
@@ -212,7 +222,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <label for="grdn-relation" class="form-label">Relation to Enrollee</label>
                             <input type="text" name="grdn_relation" class="form-control" id="grdn-relation" required>
                             <div class="invalid-feedback">
