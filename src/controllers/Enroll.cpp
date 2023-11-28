@@ -15,6 +15,8 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
     StuLvl_Shs(thisapp);
     StuLvl_College(thisapp);
     EnrollForm(thisapp);
+    EnrollFormPOST(thisapp);
+
     StuType(thisapp);
     StuType_NewStu(thisapp);
     StuType_Freshmen(thisapp);
@@ -164,6 +166,22 @@ void Enroll::EnrollForm(crow::App<crow::CookieParser, Session>& thisapp)
             auto& session = thisapp.get_context<Session>(req);
 
             page.set_static_file_info("templates/EnrollmentForm.html");
+            page.set_header("Content-Type", "text/html");
+            return page;
+        });
+}
+void Enroll::EnrollFormPOST(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/form").methods(crow::HTTPMethod::POST)(
+        [&](const crow::request& req) {
+            crow::response page(200);
+            auto& session = thisapp.get_context<Session>(req);
+
+            auto formSubmission = req.get_body_params();
+            char* enrll_lastName = formSubmission.get("enrll_lastName");
+            std::string str(enrll_lastName);
+            std::cout << formSubmission << std::endl;
+            page.body = "<h1>POST</h1> <br/>" + str;
             page.set_header("Content-Type", "text/html");
             return page;
         });
