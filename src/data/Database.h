@@ -25,7 +25,11 @@ class Database
 
 		bool initEnrollMeTables();
 		bool seedTblCurriculum();
+
+		std::vector<std::vector<std::string>> executeSelect(const std::string& query);
 	private:
 		const char* dbName_;
 		sqlite3* db_;
+
+		void errHandling(int returnCode);
 };

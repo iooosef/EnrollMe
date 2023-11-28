@@ -33,6 +33,11 @@ bool Database::closeDB()
 	return true;
 }
 
+void Database::errHandling(int returnCode) {
+	std::cerr << "SQLite error: " << sqlite3_errstr(returnCode) << std::endl;
+	std::cerr << "SQLite error message: " << sqlite3_errmsg(db_) << std::endl;
+}
+
 bool Database::initEnrollMeTables()
 {
 	const std::string create_tbl_enrollees = "CREATE TABLE IF NOT EXISTS tbl_enrollees ("
