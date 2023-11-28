@@ -25,154 +25,231 @@
                 <h4 class="mb-3">Student Registration</h4>
                 <form class="needs-validation" name="registration" method="post" autocomplete="off">
                     <div class="row g-3">
-                        <div class="col-sm-6">
-                            <label for="firstName" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                        <div class="col-md-4">
+                            <label for="enrll-firstName" class="form-label">First name</label>
+                            <input type="text" name="enrll_firstName" class="form-control" id="enrll-firstName" required>
                             <div class="invalid-feedback">
-                                Valid first name is required.
+                                Enrollee's first name is required.
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
-                            <label for="lastName" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                        <div class="col-md-3">
+                            <label for="enrll-middleName" class="form-label">Middle name</label>
+                            <input type="text" name="enrll_midName" class="form-control" id="enrll-middleName">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="enrll-lastName" class="form-label">Last name</label>
+                            <input type="text" name="enrll_lastName" class="form-control" id="enrll-lastName" required>
                             <div class="invalid-feedback">
-                                Valid last name is required.
+                                Enrollee's last name is required.
                             </div>
                         </div>
 
-                        <div class="col-12">
-                            <label for="username" class="form-label">Username</label>
-                            <div class="input-group has-validation">
-                                <span class="input-group-text">@</span>
-                                <input type="text" class="form-control" id="username" placeholder="Username" required="">
-                                <div class="invalid-feedback">
-                                    Your username is required.
-                                </div>
-                            </div>
+                        <div class="col-md-2">
+                            <label for="extName" class="form-label">Extension</label>
+                            <input type="text" name="enrll_suffixName" class="form-control" id="extName" placeholder="e.x. Jr., III" value="">
                         </div>
 
-                        <div class="col-12">
-                            <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
-                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                            <div class="invalid-feedback">
-                                Please enter a valid email address for shipping updates.
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
-                            <div class="invalid-feedback">
-                                Please enter your shipping address.
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="address2" class="form-label">Address 2 <span class="text-body-secondary">(Optional)</span></label>
-                            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                        </div>
-
-                        <div class="col-md-5">
-                            <label for="country" class="form-label">Country</label>
-                            <select class="form-select" id="country" required="">
-                                <option value="">Choose...</option>
-                                <option>United States</option>
+                        <div class="col-md-4">
+                            <label for="enrll-sex" class="form-label">Sex</label>
+                            <select class="form-select" name="enrll_sex" id="enrll-sex" required>
+                                <option value="">Select Sex</option>
+                                <option value="Male">Male</option>
+                                <option value="Male">Female</option>
                             </select>
                             <div class="invalid-feedback">
-                                Please select a valid country.
+                                Please select the enrollee's sex'.
                             </div>
                         </div>
 
                         <div class="col-md-4">
-                            <label for="state" class="form-label">State</label>
-                            <select class="form-select" id="state" required="">
-                                <option value="">Choose...</option>
-                                <option>California</option>
+                            <label for="enrll-DoB" class="form-label">Date of Birth</label>
+                            <input type="date" name="enrll_DoB" class="form-control" id="enrll-DoB" required>
+                            <div class="invalid-feedback">
+                                Enrollee's date of birth is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-PoB" class="form-label">Place of Birth</label>
+                            <input type="text" name="enrll_PoB" class="form-control" id="enrll-PoB">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-religion" class="form-label">Religion</label>
+                            <input type="text" name="enrll_religion" class="form-control" id="enrll-religion" required>
+                            <div class="invalid-feedback">
+                                Enrollee's religion is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-nationality" class="form-label">Nationality</label>
+                            <select class="form-select" name="enrll_nationality" id="enrll-nationality" required>
+                                <option value="">Select Nationality</option>
                             </select>
                             <div class="invalid-feedback">
-                                Please provide a valid state.
+                                Please select the enrollee's nationality.
                             </div>
                         </div>
 
-                        <div class="col-md-3">
-                            <label for="zip" class="form-label">Zip</label>
-                            <input type="text" class="form-control" id="zip" placeholder="" required="">
+                        <div class="col-md-4">
+                            <label for="enrll-civilStatus" class="form-label">Civil Status</label>
+                            <select class="form-select" name="enrll_civilStatus" id="enrll-civilStatus" required>
+                                <option value="">Select Civil Status</option>
+                                <option value="single">Single</option>
+                                <option value="married">Married</option>
+                                <option value="widowed">Widowed</option>
+                                <option value="legal-sep">Legally Separated</option>
+                            </select>
                             <div class="invalid-feedback">
-                                Zip code required.
+                                Please select the enrollee's civil status.
                             </div>
                         </div>
-                    </div>
 
-                    <hr class="my-4">
+                        <hr class="mt-5">
 
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="same-address">
-                        <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="save-info">
-                        <label class="form-check-label" for="save-info">Save this information for next time</label>
-                    </div>
-
-                    <hr class="my-4">
-
-                    <h4 class="mb-3">Payment</h4>
-
-                    <div class="my-3">
-                        <div class="form-check">
-                            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
-                            <label class="form-check-label" for="credit">Credit card</label>
-                        </div>
-                        <div class="form-check">
-                            <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
-                            <label class="form-check-label" for="debit">Debit card</label>
-                        </div>
-                        <div class="form-check">
-                            <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="">
-                            <label class="form-check-label" for="paypal">PayPal</label>
-                        </div>
-                    </div>
-
-                    <div class="row gy-3">
                         <div class="col-md-6">
-                            <label for="cc-name" class="form-label">Name on card</label>
-                            <input type="text" class="form-control" id="cc-name" placeholder="" required="">
-                            <small class="text-body-secondary">Full name as displayed on card</small>
+                            <label for="enrll-country" class="form-label">Country</label>
+                            <input type="text" name="enrll_country" class="form-control" id="enrll-country" required>
                             <div class="invalid-feedback">
-                                Name on card is required
+                                Enrollee's country is required.
                             </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label for="cc-number" class="form-label">Credit card number</label>
-                            <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                            <label for="enrll-province" class="form-label">Province</label>
+                            <input type="text" name="enrll_province" class="form-control" id="enrll-province" required>
                             <div class="invalid-feedback">
-                                Credit card number is required
+                                Enrollee's province is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="enrll-cityMun" class="form-label">City/Municipality</label>
+                            <input type="text" name="enrll_cityMun" class="form-control" id="enrll-cityMun" required>
+                            <div class="invalid-feedback">
+                                Enrollee's city/municipality is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="enrll-brgy" class="form-label">Barangay</label>
+                            <input type="text" name="enrll_brgy" class="form-control" id="enrll-brgy" required>
+                            <div class="invalid-feedback">
+                                Enrollee's barangay is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-10">
+                            <label for="enrll-addrLine" class="form-label">Address Line</label>
+                            <input type="text" name="enrll_addrLine" class="form-control" id="enrll-addrLine" required>
+                            <div class="invalid-feedback">
+                                Enrollee's address line is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label for="enrll-zipCode" class="form-label">Zip Code</label>
+                            <input type="text" name="enrll_zipCode" class="form-control" id="enrll-zipCode">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-mobileNumber" class="form-label">Mobile Number</label>
+                            <input type="text" name="enrll_mobileNumber" class="form-control" id="enrll-mobileNumber">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-telephoneNumber" class="form-label">Telephone Number</label>
+                            <input type="text" name="enrll_telephoneNumber" class="form-control" id="enrll-telephoneNumber">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-email" class="form-label">Email</label>
+                            <input type="text" name="enrll_email" class="form-control" id="enrll-email">
+                        </div>
+
+                        <hr class="mt-5">
+
+                        <h4 class="mb-3">Guardian's Information</h4>
+
+                        <div class="col-md-4">
+                            <label for="grdn-firstName" class="form-label">First name</label>
+                            <input type="text" name="grdn_firstName" class="form-control" id="grdn-firstName" required>
+                            <div class="invalid-feedback">
+                                Guardian's first name is required.
                             </div>
                         </div>
 
                         <div class="col-md-3">
-                            <label for="cc-expiration" class="form-label">Expiration</label>
-                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                            <label for="grdn-middleName" class="form-label">Middle name</label>
+                            <input type="text" name="grdn_midName" class="form-control" id="grdn-middleName">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="grdn-lastName" class="form-label">Last name</label>
+                            <input type="text" name="grdn_lastName" class="form-control" id="grdn-lastName" required>
                             <div class="invalid-feedback">
-                                Expiration date required
+                                Guardian's last name is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label for="extName" class="form-label">Extension</label>
+                            <input type="text" name="grdn_suffixName" class="form-control" id="extName" placeholder="e.x. Jr., III" value="">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="grdn-sex" class="form-label">Sex</label>
+                            <select class="form-select" name="grdn_sex" id="grdn-sex" required>
+                                <option value="">Select Sex</option>
+                                <option value="Male">Male</option>
+                                <option value="Male">Female</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select the guardian's sex'.
                             </div>
                         </div>
 
                         <div class="col-md-3">
-                            <label for="cc-cvv" class="form-label">CVV</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                            <label for="grdn-relation" class="form-label">Relation to Enrollee</label>
+                            <input type="text" name="grdn_relation" class="form-control" id="grdn-relation" required>
                             <div class="invalid-feedback">
-                                Security code required
+                                Guardian's relation is required.
                             </div>
                         </div>
+
+                        <div class="col-md-12">
+                            <label for="grdn-address" class="form-label">Full Address</label>
+                            <input type="text" name="grdn_address" class="form-control" id="grdn-address" required>
+                            <div class="invalid-feedback">
+                                Guardian's full address is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="grdn-mobileNumber" class="form-label">Mobile Number</label>
+                            <input type="text" name="grdn_mobileNumber" class="form-control" id="grdn-mobileNumber" required>
+                            <div class="invalid-feedback">
+                                Guardian's mobile number is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="grdn-telephoneNumber" class="form-label">Telephone Number</label>
+                            <input type="text" name="grdn_telephoneNumber" class="form-control" id="grdn-telephoneNumber">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="grdn-email" class="form-label">Email</label>
+                            <input type="text" name="grdn_email" class="form-control" id="grdn-email">
+                        </div>
+
+                        <hr class="mt-5">
+
+                        <button class="w-100 btn btn-dark btn-lg" type="submit">Enroll</button>
                     </div>
-
-                    <hr class="my-4">
-
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
                 </form>
             </div>
         </main>
@@ -183,5 +260,25 @@
     </div>
 
     <script src="../static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
 </body>
 </html>
