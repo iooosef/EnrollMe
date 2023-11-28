@@ -4,6 +4,7 @@
 
 #include <crow.h>
 #include "../include/crow/middlewares/session.h"
+#include "data/Database.h"
 
 using Session = crow::SessionMiddleware<crow::FileStore>;
 
@@ -27,6 +28,11 @@ class Enroll
 
 		void EnrollForm(crow::App<crow::CookieParser, Session>& thisapp);
 		// POST ROUTES
+
+		// HTMX ROUTES
+		void testHTMX(crow::App<crow::CookieParser, Session>& thisapp);
+		void getNationalities(crow::App<crow::CookieParser, Session>& thisapp);
+		void getCountries(crow::App<crow::CookieParser, Session>& thisapp);
 
 		// MISC FUNCTIONS
 		void ClearSession(crow::App<crow::CookieParser, Session>& thisapp, const crow::request& req);

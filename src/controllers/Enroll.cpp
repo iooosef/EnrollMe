@@ -20,6 +20,10 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
     StuType_Freshmen(thisapp);
     StuType_TranShft(thisapp);
     StuType_OldStu(thisapp);
+
+    testHTMX(thisapp);
+    getNationalities(thisapp);
+    getCountries(thisapp);
 }
 
 
@@ -164,6 +168,66 @@ void Enroll::EnrollForm(crow::App<crow::CookieParser, Session>& thisapp)
             return page;
         });
 }
+
+// HTMX ROUTES/METHODS
+
+void Enroll::testHTMX(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/testHTMX").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+            crow::response res;
+            res.body = "<h1>test</h1><i>hello htmx!</i>";
+            res.set_header("Content-Type", "text/html");
+			return res;
+		});
+}
+
+void Enroll::getNationalities(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/getNationalities").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+			crow::response res;
+            Database OptionsDb("./data/OptionsProvider.db");
+            std::string optionsHtml = "";
+            if (OptionsDb.openDB())
+            {
+                std::string query = "SELECT * FROM tbl_nationalities;";
+                std::vector<std::vector<std::string>> results = OptionsDb.executeSelect(query);
+                for (const auto& row : results)
+                {
+                    optionsHtml += "<option value=\"" + row[1] + "\">" + row[1] + "</option>";
+                }
+            }
+            res.body = optionsHtml;
+            res.set_header("Content-Type", "text/html");
+			return res;
+		});
+}
+
+void Enroll::getCountries(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/getCountries").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+			crow::response res;
+			Database OptionsDb("./data/OptionsProvider.db");
+			std::string optionsHtml = "";
+            if (OptionsDb.openDB())
+            {
+				std::string query = "SELECT code, name FROM tbl_countries;";
+				std::vector<std::vector<std::string>> results = OptionsDb.executeSelect(query);
+                for (const auto& row : results)
+                {
+					optionsHtml += "<option value=\"" + row[0] + "\">" + row[1] + "</option>";
+				}
+			}
+			res.body = optionsHtml;
+			res.set_header("Content-Type", "text/html");
+			return res;
+		});
+}
+
+
+// MISC METHODS
 
 void Enroll::ClearSession(crow::App<crow::CookieParser, Session>& thisapp, const crow::request& req)
 {
