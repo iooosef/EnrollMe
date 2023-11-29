@@ -14,19 +14,24 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
     StuLvl_Jhs(thisapp);
     StuLvl_Shs(thisapp);
     StuLvl_College(thisapp);
+
     StuProgram(thisapp);
     StuProgramPOST(thisapp);
+
     EnrollForm(thisapp);
     EnrollFormPOST(thisapp);
 
     StuType(thisapp);
     StuType_NewStu(thisapp);
     StuType_Freshmen(thisapp);
-    StuType_TranShft(thisapp);
+    StuType_Transferee(thisapp);
+    StuType_Shiftee(thisapp);
     StuType_OldStu(thisapp);
 
     EnrollSummary(thisapp);
+
     EnrollInsert(thisapp);
+
     testHTMX(thisapp);
     getNationalities(thisapp);
     getCountries(thisapp);
@@ -148,12 +153,11 @@ void Enroll::StuType(crow::App<crow::CookieParser, Session>& thisapp)
 			else if (stu_lvl == "college") {
                 page.set_static_file_info("templates/stuType-college.html");
                 page.set_header("Content-Type", "text/html");
-                return page;
 			}
 			else {
 				page.redirect("/enroll/level");
-				page.end();
 			}
+            return page;
         });
 }
 
@@ -178,6 +182,9 @@ void Enroll::StuType_Freshmen(crow::App<crow::CookieParser, Session>& thisapp)
             session.set("stu_type", "freshmen");
             res.redirect("/enroll/form");
             return res;
+        });
+}
+
 void Enroll::StuType_Transferee(crow::App<crow::CookieParser, Session>& thisapp)
 {
     CROW_ROUTE(thisapp, "/enroll/type/transferee").methods(crow::HTTPMethod::GET)(
