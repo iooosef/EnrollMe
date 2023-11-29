@@ -256,3 +256,19 @@ void Enroll::ClearSession(crow::App<crow::CookieParser, Session>& thisapp, const
         session.remove(key);
     }
 }
+
+std::string Enroll::generateShortUUID() {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, 15);
+
+    const char* hex_chars = "0123456789abcdef";
+
+    std::string shortUUID;
+
+    for (int i = 0; i < 16; ++i) {
+        shortUUID += hex_chars[dis(gen)];
+    }
+
+    return shortUUID;
+}

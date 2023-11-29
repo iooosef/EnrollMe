@@ -37,4 +37,5 @@ class Enroll
 
 		// MISC FUNCTIONS
 		void ClearSession(crow::App<crow::CookieParser, Session>& thisapp, const crow::request& req);
+		std::string generateShortUUID();
 };		
