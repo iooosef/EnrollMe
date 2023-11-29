@@ -220,8 +220,13 @@ void Enroll::EnrollForm(crow::App<crow::CookieParser, Session>& thisapp)
         [&](const crow::request& req) {
             crow::response page(200);
             auto& session = thisapp.get_context<Session>(req);
-
-            page.set_static_file_info("templates/EnrollmentForm.html");
+            std::string stu_type = session.string("stu_type");
+            if (stu_type == "oldStu" || stu_type == "shiftee") {
+                page.set_static_file_info("templates/EnrollmentForm-StuNum.html");
+            } 
+            else {
+                page.set_static_file_info("templates/EnrollmentForm.html");
+            }
             page.set_header("Content-Type", "text/html");
             return page;
         });
