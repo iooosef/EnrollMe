@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EnrollMe</title>
+    <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/css/index.css" rel="stylesheet" />
+    <script src="../static/lib/htmx/htmx.min.js"></script>
+    <style>
+        .checkbox-wrapper-16 *,
+        .checkbox-wrapper-16 *:after,
+        .checkbox-wrapper-16 *:before {
+            box-sizing: border-box;
+        }
+        .checkbox-wrapper-16 .checkbox-input {
+            clip: rect(0 0 0 0);
+            -webkit-clip-path: inset(100%);
+            clip-path: inset(100%);
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+        }
+            .checkbox-wrapper-16 .checkbox-input:checked + .checkbox-tile {
+                border-color: #2260ff;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                color: #2260ff;
+            }
+                .checkbox-wrapper-16 .checkbox-input:checked + .checkbox-tile:before {
+                    transform: scale(1);
+                    opacity: 1;
+                    background-color: #2260ff;
+                    border-color: #2260ff;
+                }
+                .checkbox-wrapper-16 .checkbox-input:checked + .checkbox-tile .checkbox-icon,
+                .checkbox-wrapper-16 .checkbox-input:checked + .checkbox-tile .checkbox-label {
+                    color: #2260ff;
+                }
+            .checkbox-wrapper-16 .checkbox-input:focus + .checkbox-tile {
+                border-color: #2260ff;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
+            }
+                .checkbox-wrapper-16 .checkbox-input:focus + .checkbox-tile:before {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+        .checkbox-wrapper-16 .checkbox-tile {
+            padding: 0 3.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            min-height: 4rem;
+            border-radius: 0.5rem;
+            border: 2px solid #b5bfd9;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.15s ease;
+            cursor: pointer;
+            position: relative;
+        }
+            .checkbox-wrapper-16 .checkbox-tile:before {
+                content: "";
+                position: absolute;
+                display: block;
+                width: 2.64rem;
+                height: 2.64rem;
+                border: 2px solid #b5bfd9;
+                background-color: #fff;
+                border-radius: 50%;
+                top: 0.5rem;
+                left: 0.5rem;
+                opacity: 0;
+                transform: scale(0);
+                transition: 0.25s ease;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E");
+                background-size: 12px;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+            }
+            .checkbox-wrapper-16 .checkbox-tile:hover {
+                border-color: #2260ff;
+            }
+                .checkbox-wrapper-16 .checkbox-tile:hover:before {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+        .checkbox-wrapper-16 .checkbox-icon {
+            transition: 0.375s ease;
+            color: #494949;
+        }
+            .checkbox-wrapper-16 .checkbox-icon svg {
+                width: 3rem;
+                height: 3rem;
+            }
+        .checkbox-wrapper-16 .checkbox-label {
+            color: #707070;
+            transition: 0.375s ease;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="d-flex h-100">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0">EnrollMe</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link fw-bold py-1 px-0" href="/EnrollNow">Enroll Now</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="px-3 py-5 d-flex justify-content-center">
+            <div class="col-8">
+                <div class="mb-5 row">
+                    <h2 class="col">Courses Enrollment</h2>
+                    <div class="px-0 col">
+                        <button type="button" class="btn btn-outline-dark" id="htmx-load"
+                            hx-get="/enroll/getCourses"
+                            hx-trigger="click"
+                            hx-target="#courses-options"
+                            hx-swap="innerHTML">
+                            Load Courses
+                        </button>
+                        <button type="button" class="btn btn-outline-dark" disabled> <span id="totalUnits">0</span>/24 units</button>
+                    </div>
+                </div>
+
+                <form class="needs-validation" action="/enroll/coursesPOST" name="courses" id="coursesReg" method="get">
+                    <div class="row g-3">
+                        <span class="row g-3" id="courses-options">
+
+                        </span>
+
+                        <hr class="mt-5">
+
+                        <button class="w-100 btn btn-dark btn-lg" type="button" onclick="validateForm()">Enroll</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="mt-auto text-black-50 text-center">
+            <p>© 2023 Technological Institute of the Philippines - Quezon City - ITE001 CS11S2 - Group 8. <a href="https://github.com/iooosef/EnrollMe" class="text-black">EnrollMe</a> is released under the GNU GPL-2.0 license.</p>
+        </footer>
+    </div>
+
+    <script src="../static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to update total units counter
+        function updateTotalUnits() {
+            var checkboxes = document.querySelectorAll('#coursesReg input[type="checkbox"]');
+            var totalUnits = 0;
+
+            checkboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    totalUnits += parseInt(checkbox.getAttribute('data-units'));
+                }
+            });
+
+            document.getElementById('totalUnits').innerText = totalUnits;
+            return totalUnits;
+        }
+
+        document.addEventListener('change', function (event) {
+            if (event.target.matches('#coursesReg input[type="checkbox"]')) {
+                updateTotalUnits();
+            }
+        });
+
+
+
+        function validateForm() {
+            var checkboxes = document.querySelectorAll('#coursesReg input[type="checkbox"]');
+            var totalUnits = 0;
+
+            checkboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    totalUnits += parseInt(checkbox.getAttribute('data-units'));
+                }
+            });
+
+            document.getElementById('totalUnits').innerText = totalUnits;
+
+            if (updateTotalUnits() > 24) {
+                alert('Total units exceed 24. Please adjust your selections.');
+                return;
+            } else if (updateTotalUnits() == 0) {
+                alert('Please select at least one course.');
+                return;
+            
+            }
+
+            checkboxes.forEach(function (checkbox) {
+                var coreqValue = checkbox.getAttribute('data-coreq');
+                if (coreqValue) {
+                    var coreqCheckbox = document.querySelector('input[value="' + coreqValue + '"]');
+                    if (coreqCheckbox && checkbox.checked !== coreqCheckbox.checked) {
+                        alert('Corequisite checkboxes must be either both checked or both unchecked.');
+                        return;
+                    }
+                }
+            });
+
+            var confirmed = window.confirm('Are you sure your options are final?');
+
+            // If user confirms, submit the form
+            if (confirmed) {
+                alert('Form submitted successfully!');
+                document.getElementById('coursesReg').submit();
+            }
+        }
+    </script>
+</body>
+</html>
