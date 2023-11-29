@@ -24,7 +24,8 @@ class Database
 		bool closeDB();
 
 		bool initEnrollMeTables();
-		bool seedTblCurriculum();
+		bool loadCurriculum();
+		bool seedDatabase();
 
 		bool executeInsert(const std::string& table, const std::vector<std::string>& columns, const std::vector<std::string>& values);
 		std::vector<std::vector<std::string>> executeSelect(const std::string& query);

@@ -181,7 +181,7 @@ bool Database::initEnrollMeTables()
 	return true;
 }
 
-bool Database::seedTblCurriculum()
+bool Database::loadCurriculum()
 {
 	{
 		// reset tbl_curriculum
@@ -254,6 +254,56 @@ bool Database::seedTblCurriculum()
 	}
 
 	file.close();
+	return true;
+}
+
+bool Database::seedDatabase()
+{
+	std::vector<std::string> studentNfo_columns = { "student_number", "enrll_firstName", "enrll_midName", "enrll_lastName", "enrll_suffixName",
+												    "enrll_sex", "enrll_DoB", "enrll_PoB", "enrll_religion", "enrll_nationality", "enrll_civilStatus",
+											   	    "enrll_country", "enrll_province", "enrll_cityMun", "enrll_brgy", "enrll_zipCode", "enrll_addrLine",
+												    "enrll_mobileNumber", "enrll_telephoneNumber", "enrll_email",
+												    "grdn_firstName", "grdn_midName", "grdn_lastName", "grdn_suffixName", "grdn_sex", "grdn_relation",
+												    "grdn_address", "grdn_mobileNumber", "grdn_telephoneNumber", "grdn_email" };
+	std::vector<std::string> studentNfo_values[2] = { {
+														"2002406", "Joseph", "Cabacungan", "Parayaoan", "", "Male", "2001-07-22", "Quezon City", 
+														"Roman Catholic", "Filipino", "Single", "PHL", "Rizal", "Cainta", "San Juan", "1900", 
+														"16 7th St. Youngstown Village", "09613697364", "", "josence22@gmail.com", 
+														"Rosemarie", "Cabacungan", "Parayaoan", "", "Female", "Mother",
+														"16 7th St. Youngstown Village, San Juan, Cainta, Rizal", "09186050846", "", "rosepccc@gmail.com"
+													  },
+													  {
+														"2106499", "Clarence", "B", "Danilo", "", "Male", "2002-06-01", "Quezon City", 
+														"Roman Catholic", "Filipino", "Single", "PHL", "Rizal", "Antipolo", "Sto Nino", "",
+														"Blk 2 Lot 3, St. Jude St. St. Nino Village", "09123456789", "", "",
+														"Ernesto", "Miranda", "Danilo", "", "Male", "Father",
+														"Blk 2 Lot 3, St. Jude St. St. Nino Village, Antipolo, Rizal", "09123456789", "", "edanilo@yahoo.com"
+													  }
+													};
+	std::vector<std::string> courseHistory_columns = { "student_number", "course_code", "remarks" };
+	std::vector<std::string> courseHistory_values[8] = { {"2002406", "GEC004", "PASSED"}, {"2002406", "GEC001", "PASSED"}, {"2002406", "MATH013", "PASSED"},
+															{"2002406", "MATH014", "PASSED"}, {"2002406", "CS001", "PASSED"}, {"2002406", "ITE001", "PASSED"},
+															{"2002406", "PE001", "PASSED"}, {"2002406", "NSTP001", "PASSED"}
+														};
+
+	for (int i = 0; i < 2; i++)
+	{
+		if (!executeInsert("tbl_studentNfo", studentNfo_columns, studentNfo_values[i]))
+		{
+			std::cout << "Error inserting values for tbl_studentNfo" << std::endl;
+			return false;
+		}
+	}
+
+	for (int i = 0; i < 8; i++)
+	{
+		if (!executeInsert("tbl_course_history", courseHistory_columns, courseHistory_values[i]))
+		{
+			std::cout << "Error inserting values for tbl_course_history" << std::endl;
+			return false;
+		}
+	}
+
 	return true;
 }
 
