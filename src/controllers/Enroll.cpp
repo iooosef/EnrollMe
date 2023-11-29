@@ -14,6 +14,8 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
     StuLvl_Jhs(thisapp);
     StuLvl_Shs(thisapp);
     StuLvl_College(thisapp);
+    StuProgram(thisapp);
+    StuProgramPOST(thisapp);
     EnrollForm(thisapp);
     EnrollFormPOST(thisapp);
 
@@ -92,8 +94,41 @@ void Enroll::StuLvl_College(crow::App<crow::CookieParser, Session>& thisapp)
             session.set("stu_lvl", "college");
             res.redirect("/enroll/program");
             return res;
+        });
+}
+
+
+void Enroll::StuProgram(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/program").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+            crow::response page(200);
+            auto& session = thisapp.get_context<Session>(req);
+            std::string stu_lvl = session.string("stu_lvl");
+
+            if (stu_lvl == "shs") {
+                page.set_static_file_info("templates/stuProgram-shs.html");
+                page.set_header("Content-Type", "text/html");
+                return page;
+            }
+            else {
+                page.set_static_file_info("templates/stuProgram-college.html");
+                page.set_header("Content-Type", "text/html");
+                return page;
+            }
+        });
+}
+void Enroll::StuProgramPOST(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/program/submit").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+            crow::response res;
+            std::cout << "POST /enroll/program\n";
+            auto& session = thisapp.get_context<Session>(req);
+            //auto formSubmission = req.get_body_params();
+            session.get("enrll_program", req.url_params.get("enrll_program"));
             res.redirect("/enroll/type");
-            res.end();
+            return res;
         });
 }
 

@@ -29,9 +29,12 @@ class Enroll
 		void StuType_Shiftee(crow::App<crow::CookieParser, Session>& thisapp);
 		void StuType_OldStu(crow::App<crow::CookieParser, Session>& thisapp);
 
+		void StuProgram(crow::App<crow::CookieParser, Session>& thisapp);
+		void StuProgramPOST(crow::App<crow::CookieParser, Session>& thisapp);
+
 		void EnrollForm(crow::App<crow::CookieParser, Session>& thisapp);
 		void EnrollFormPOST(crow::App<crow::CookieParser, Session>& thisapp);
-		// POST ROUTES
+
 		void EnrollSummary(crow::App<crow::CookieParser, Session>& thisapp);
 		
 		// DB ROUTES
