@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EnrollMe</title>
+    <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/css/index.css" rel="stylesheet" />
+    <script src="../static/lib/htmx/htmx.min.js"></script>
+</head>
+<body class="d-flex h-100">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0">EnrollMe</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link fw-bold py-1 px-0" href="/EnrollNow">Enroll Now</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="px-3 py-5 d-flex justify-content-center">
+            <div class="col-8">
+                <h2 class="mb-5">Student Registration</h2>
+                <form class="needs-validation" action="/enroll/program/submit" name="stuProgram" method="get" autocomplete="off">
+                    <div class="row g-3 justify-content-center">
+
+                        <div class="col-md-12">
+                            <label for="enrll-program" class="form-label">Senior High School Strand</label>
+                            <select class="form-select" name="enrll_program" id="enrll-program" required>
+                                <option value="">Select Strand</option>
+                                <option value="STEM">Science, Technology, Engineering, and Mathematics</option>
+                                <option value="ABM">Accountancy, Business and Management</option>
+                                <option value="HUMSS">Humanities and Social Sciences</option>
+                                <option value="GAS">General Academic Strand</option>
+                                <option value="ICT">Information and Communications Technology (ICT)</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a strand.
+                            </div>
+                        </div>
+
+                        <hr class="mt-5">
+
+                        <button class="w-100 btn btn-dark btn-lg" type="submit">Next</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="mt-auto text-black-50 text-center">
+            <p>© 2023 Technological Institute of the Philippines - Quezon City - ITE001 CS11S2 - Group 8. <a href="https://github.com/iooosef/EnrollMe" class="text-black">EnrollMe</a> is released under the GNU GPL-2.0 license.</p>
+        </footer>
+    </div>
+
+    <script src="../static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+</body>
+</html>
