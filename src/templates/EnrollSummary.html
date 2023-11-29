@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EnrollMe</title>
+    <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/css/index.css" rel="stylesheet" />
+    <script src="../static/lib/htmx/htmx.min.js"></script>
+    <style>
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            font-size: 16px;
+            line-height: 24px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+
+        .invoice-box table {
+            width: 100%;
+            line-height: inherit;
+            text-align: left;
+        }
+
+        .invoice-box table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .invoice-box table tr td:nth-child(2) {
+            text-align: right;
+        }
+
+        .invoice-box table tr.top table td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.top table td.title {
+            font-size: 45px;
+            line-height: 45px;
+            color: #333;
+        }
+
+        .invoice-box table tr.information table td {
+            padding-bottom: 40px;
+        }
+
+        .invoice-box table tr.heading td {
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        .invoice-box table tr.details td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.item td {
+            border-bottom: 1px solid #eee;
+        }
+
+        .invoice-box table tr.item.last td {
+            border-bottom: none;
+        }
+
+        .invoice-box table tr.total td:nth-child(2) {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .invoice-box table tr.top table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+
+            .invoice-box table tr.information table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        /** RTL **/
+        .invoice-box.rtl {
+            direction: rtl;
+            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        }
+
+        .invoice-box.rtl table {
+            text-align: right;
+        }
+
+        .invoice-box.rtl table tr td:nth-child(2) {
+            text-align: left;
+        }
+    </style>
+</head>
+<body class="d-flex h-100 text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0">EnrollMe</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link fw-bold py-1 px-0" href="/enroll/level">Enroll Now</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="px-3">
+            <div class="invoice-box my-5">
+                <table cellpadding="0" cellspacing="0">
+                    <tr class="top">
+                        <td colspan="2">
+                            <table>
+                                <tr>
+                                    <td class="title">
+                                        <h4>Transaction ID</h4>
+                                        <h1>{{enrll_transactionId}}</h1>
+                                    </td>
+                                    <td>
+                                        A.Y. {{enrll_schoolYear}} Sem. {{enrll_semester}} <br />
+                                        {{enrll_type}} <br />
+                                        {{enrll_level}} <br />
+                                        {{enrll_program}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+    
+    
+                    <tr class="heading">
+                        <td>Full Name</td>
+                        <td>Student Number</td>
+                    </tr>
+    
+                    <tr class="details">
+                        <td>{{enrll_lastName}}, {{enrll_firstName}} {{enrll_midName}} {{enrll_suffixName}}</td>
+                        <td>{{student_number}}</td>
+                    </tr>
+                </table>
+                <div class="row row-cols-2" style="--bs-gutter-x: 0;">
+
+                <table cellpadding="0" cellspacing="0" class="col">
+                    <tbody>
+                        <tr class="heading">
+                          <td class="text-start">Sex</td>
+                          <td class="text-end">Date of Birth</td>
+                        </tr>
+                        <tr class="details">
+                            <td class="text-start">{{enrll_sex}}</td>
+                            <td class="text-end">{{enrll_DoB}}</td>
+                        </tr>
+                        <tr class="heading">
+                          <td class="text-start">Nationality</td>
+                          <td class="text-end">Civil Status</td>
+                        </tr>
+                        <tr class="details">
+                            <td class="text-start">{{enrll_nationality}}</td>
+                            <td class="text-end">{{enrll_civilStatus}}</td>
+                        </tr>
+                      </tbody>
+                </table>
+
+                <table cellpadding="0" cellspacing="0" class="col">
+                    <tbody>
+                        <tr class="heading">
+                          <td class="text-start">Place of Birth</td>
+                          <td class="text-end">Religion</td>
+                        </tr>
+                        <tr class="details">
+                            <td class="text-start">{{enrll_PoB}}</td>
+                            <td class="text-end">{{enrll_religion}}</td>
+                        </tr>
+                        <tr class="heading">
+                          <td class="text-start">Country</td>
+                          <td class="text-end">Province</td>
+                        </tr>
+                        <tr class="details">
+                            <td class="text-start">{{enrll_country}}</td>
+                            <td class="text-end">{{enrll_province}}</td>
+                        </tr>
+                      </tbody>
+                </table>
+
+                    <table cellpadding="0" cellspacing="0" class="col">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">City/Municipality</td>
+                                <td class="text-end">Barangay</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{enrll_cityMun}}</td>
+                                <td class="text-end">{{enrll_brgy}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="col">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">Zip Code</td>
+                                <td class="text-end">⠀</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{enrll_zipCode}}</td>
+                                <td class="text-end">⠀</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellpadding="0" cellspacing="0" class="col-12">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">Address Line</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{enrll_addrLine}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellpadding="0" cellspacing="0" class="col">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">Mobile Number</td>
+                                <td class="text-end">Telephone Number</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{enrll_mobileNumber}}</td>
+                                <td class="text-end">{{enrll_telephoneNumber}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="col">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">Email</td>
+                                <td class="text-end">⠀</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{enrll_email}}</td>
+                                <td class="text-end">⠀</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellpadding="0" cellspacing="0" class="col-12">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">Guardian Full Name</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{grdn_lastName}}, {{grdn_firstName}} {{grdn_midName}} {{grdn_suffixName}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellpadding="0" cellspacing="0" class="col">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">Guardian's Sex</td>
+                                <td class="text-end">Relation to Enrollee</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{grdn_sex}}</td>
+                                <td class="text-end">{{grdn_relation}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellpadding="0" cellspacing="0" class="col-12">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">Guardian Full Address</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{grdn_address}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellpadding="0" cellspacing="0" class="col">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">Mobile Number</td>
+                                <td class="text-end">Telephone Number</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{grdn_mobileNumber}}</td>
+                                <td class="text-end">{{grdn_telephoneNumber}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellpadding="0" cellspacing="0" class="col">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">Email</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{grdn_email}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </main>
+
+        <footer class="mt-auto text-black-50">
+            <p>© 2023 Technological Institute of the Philippines - Quezon City - ITE001 CS11S2 - Group 8. <a href="https://github.com/iooosef/EnrollMe" class="text-black">EnrollMe</a> is released under the GNU GPL-2.0 license.</p>
+        </footer>
+    </div>
+
+    <script src="./static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
