@@ -54,7 +54,7 @@ In order to use vcpkg with Visual Studio, run the following command (may require
 
 </details>
 
-### Project Setup
+### Project Development Setup
 
 1. Enter the ff. code in **Windows Powershell** to set the environment variables:
 ```pwsh
@@ -85,9 +85,17 @@ vcpkg install
 cmake -B build -S .\ --preset x64-debug
 ```
 
-9. Build and run the Project
+9. In Visual Studio click `Debug` menu bar, then `Debug and Launch Settings for EnrollMe`.
 
+10. inside `launch.vs.json`, add the following below `"name"` to run the web server.
+```json
+"name": "EnrollMe.exe",
+"args": [
+  "run"
+]
 ---
+
+11. Debug and Run
 
 <span style="font-size: 10px;" >
 <i> Documentation by Group 8 ITE001 - CS11S2 </i> 
