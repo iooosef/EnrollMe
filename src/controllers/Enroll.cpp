@@ -235,16 +235,38 @@ void Enroll::EnrollFormPOST(crow::App<crow::CookieParser, Session>& thisapp)
 {
     CROW_ROUTE(thisapp, "/enroll/form").methods(crow::HTTPMethod::POST)(
         [&](const crow::request& req) {
-            crow::response page(200);
+            auto page = crow::mustache::load("FormConfirm.html");
             auto& session = thisapp.get_context<Session>(req);
-
+            std::string stu_type = session.string("stu_type");
+            std::string stu_lvl = session.string("stu_lvl");
             auto formSubmission = req.get_body_params();
-            char* enrll_lastName = formSubmission.get("enrll_lastName");
-            std::string str(enrll_lastName);
-            std::cout << formSubmission << std::endl;
-            page.body = "<h1>POST</h1> <br/>" + str;
-            page.set_header("Content-Type", "text/html");
-            return page;
+            std::string fields[30] = {"enrll_firstName", "enrll_midName", "enrll_lastName", "enrll_suffixName", 
+                                      "enrll_sex", "enrll_DoB", "enrll_PoB", "enrll_religion", "enrll_nationality", "enrll_civilStatus",
+                                      "enrll_country", "enrll_province", "enrll_cityMun", "enrll_brgy", "enrll_zipCode", "enrll_addrLine", 
+                                      "enrll_mobileNumber", "enrll_telephoneNumber", "enrll_email", 
+                                      "grdn_firstName", "grdn_midName", "grdn_lastName", "grdn_suffixName", "grdn_sex", "grdn_relation",
+                                      "grdn_address", "grdn_mobileNumber", "grdn_telephoneNumber", "grdn_email"
+                                     };
+
+            crow::json::wvalue mustacheMappings;
+
+            for (int x = 0; x < 29; x++) {
+				mustacheMappings[fields[x]] = formSubmission.get(fields[x]);
+                session.set(fields[x], formSubmission.get(fields[x]));
+			}
+
+            if (stu_type == "oldStu" || stu_type == "shiftee")
+            {
+                page = crow::mustache::load("FormConfirm-StuNum.html");
+                mustacheMappings["student_number"] = formSubmission.get("student_number");
+                session.set("student_number", formSubmission.get("student_number"));
+            }
+
+            crow::mustache::context ctx (mustacheMappings);
+            return page.render(ctx);
+        });
+}
+
 void Enroll::EnrollInsert(crow::App<crow::CookieParser, Session>& thisapp)
 {
     CROW_ROUTE(thisapp, "/enroll/dbInsert").methods(crow::HTTPMethod::GET)(
@@ -364,6 +386,7 @@ void Enroll::EnrollSummary(crow::App<crow::CookieParser, Session>& thisapp)
             crow::mustache::context ctx(mustacheMappings);
             return page.render(ctx);
         });
+
 }
 
 // HTMX ROUTES/METHODS
