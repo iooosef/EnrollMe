@@ -93,9 +93,16 @@ cmake -B build -S .\ --preset x64-debug
 "args": [
   "run"
 ]
----
+```
 
 11. Debug and Run
+
+### Running 
+
+To run the web server. Add the `run` as an argument.
+```pwsh
+./EnrollMe.exe run
+```
 
 <span style="font-size: 10px;" >
 <i> Documentation by Group 8 ITE001 - CS11S2 </i> 
