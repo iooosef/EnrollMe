@@ -76,7 +76,7 @@ void Enroll::StuLvl_Shs(crow::App<crow::CookieParser, Session>& thisapp)
             crow::response res;
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_lvl", "shs");
-            res.redirect("/enroll/type");
+            res.redirect("/enroll/program");
             return res;
         });
 }
@@ -88,6 +88,7 @@ void Enroll::StuLvl_College(crow::App<crow::CookieParser, Session>& thisapp)
             crow::response res;
             auto& session = thisapp.get_context<Session>(req);
             session.set("stu_lvl", "college");
+            res.redirect("/enroll/program");
             return res;
             res.redirect("/enroll/type");
             res.end();
