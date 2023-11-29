@@ -147,48 +147,47 @@
                     </tr>
                 </table>
                 <div class="row row-cols-2" style="--bs-gutter-x: 0;">
+                    <table cellpadding="0" cellspacing="0" class="col">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">Sex</td>
+                                <td class="text-end">Date of Birth</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{enrll_sex}}</td>
+                                <td class="text-end">{{enrll_DoB}}</td>
+                            </tr>
+                            <tr class="heading">
+                                <td class="text-start">Nationality</td>
+                                <td class="text-end">Civil Status</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{enrll_nationality}}</td>
+                                <td class="text-end">{{enrll_civilStatus}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                <table cellpadding="0" cellspacing="0" class="col">
-                    <tbody>
-                        <tr class="heading">
-                          <td class="text-start">Sex</td>
-                          <td class="text-end">Date of Birth</td>
-                        </tr>
-                        <tr class="details">
-                            <td class="text-start">{{enrll_sex}}</td>
-                            <td class="text-end">{{enrll_DoB}}</td>
-                        </tr>
-                        <tr class="heading">
-                          <td class="text-start">Nationality</td>
-                          <td class="text-end">Civil Status</td>
-                        </tr>
-                        <tr class="details">
-                            <td class="text-start">{{enrll_nationality}}</td>
-                            <td class="text-end">{{enrll_civilStatus}}</td>
-                        </tr>
-                      </tbody>
-                </table>
-
-                <table cellpadding="0" cellspacing="0" class="col">
-                    <tbody>
-                        <tr class="heading">
-                          <td class="text-start">Place of Birth</td>
-                          <td class="text-end">Religion</td>
-                        </tr>
-                        <tr class="details">
-                            <td class="text-start">{{enrll_PoB}}</td>
-                            <td class="text-end">{{enrll_religion}}</td>
-                        </tr>
-                        <tr class="heading">
-                          <td class="text-start">Country</td>
-                          <td class="text-end">Province</td>
-                        </tr>
-                        <tr class="details">
-                            <td class="text-start">{{enrll_country}}</td>
-                            <td class="text-end">{{enrll_province}}</td>
-                        </tr>
-                      </tbody>
-                </table>
+                    <table cellpadding="0" cellspacing="0" class="col">
+                        <tbody>
+                            <tr class="heading">
+                                <td class="text-start">Place of Birth</td>
+                                <td class="text-end">Religion</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{enrll_PoB}}</td>
+                                <td class="text-end">{{enrll_religion}}</td>
+                            </tr>
+                            <tr class="heading">
+                                <td class="text-start">Country</td>
+                                <td class="text-end">Province</td>
+                            </tr>
+                            <tr class="details">
+                                <td class="text-start">{{enrll_country}}</td>
+                                <td class="text-end">{{enrll_province}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                     <table cellpadding="0" cellspacing="0" class="col">
                         <tbody>
@@ -309,9 +308,14 @@
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
-            </div>
+                <div class="row row-cols-3" style="--bs-gutter-x: 0;" id="courses-summary"
+                     hx-get="/enroll/hxgetCourses"
+                     hx-trigger="load once"
+                     hx-target="#courses-summary"
+                     hx-swap="innerHTML">
+                   
+                </div>
         </main>
 
         <footer class="mt-auto text-black-50">
