@@ -24,6 +24,7 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
     StuType_OldStu(thisapp);
 
     EnrollSummary(thisapp);
+    EnrollInsert(thisapp);
     testHTMX(thisapp);
     getNationalities(thisapp);
     getCountries(thisapp);
@@ -204,6 +205,86 @@ void Enroll::EnrollFormPOST(crow::App<crow::CookieParser, Session>& thisapp)
             page.body = "<h1>POST</h1> <br/>" + str;
             page.set_header("Content-Type", "text/html");
             return page;
+void Enroll::EnrollInsert(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/dbInsert").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+            crow::response res;
+            auto& session = thisapp.get_context<Session>(req);
+            Database EnrollMeDb("./data/EnrollMe.db");
+            const std::string SCHOOL_YEAR = "2023-2024";
+            const std::string SEMESTER = "1";
+            const std::string TRANSACTION_ID = generateShortUUID();
+
+            std::string tableName = "tbl_enrollees";
+            std::vector<std::string> columns = { "enrll_transactionId", "enrll_type", "enrll_level", "enrll_schoolYear", "enrll_semester", 
+                                                 "enrll_firstName", "enrll_midName", "enrll_lastName", "enrll_suffixName",
+                                                 "enrll_sex", "enrll_DoB", "enrll_PoB", "enrll_religion", "enrll_nationality", "enrll_civilStatus",
+                                                 "enrll_country", "enrll_province", "enrll_cityMun", "enrll_brgy", "enrll_zipCode", "enrll_addrLine",
+                                                 "enrll_mobileNumber", "enrll_telephoneNumber", "enrll_email",
+                                                 "grdn_firstName", "grdn_midName", "grdn_lastName", "grdn_suffixName", "grdn_sex", "grdn_relation",
+                                                 "grdn_address", "grdn_mobileNumber", "grdn_telephoneNumber", "grdn_email" };
+            std::vector<std::string> values = { TRANSACTION_ID, session.string("stu_type"), session.string("stu_lvl"), SCHOOL_YEAR, SEMESTER,
+                                                 session.string("enrll_firstName"), session.string("enrll_midName"), session.string("enrll_lastName"), 
+                                                 session.string("enrll_suffixName"), session.string("enrll_sex"), session.string("enrll_DoB"), 
+                                                 session.string("enrll_PoB"), session.string("enrll_religion"), session.string("enrll_nationality"), 
+                                                 session.string("enrll_civilStatus"),
+                                                 session.string("enrll_country"), session.string("enrll_province"), session.string("enrll_cityMun"), 
+                                                 session.string("enrll_brgy"), session.string("enrll_zipCode"), session.string("enrll_addrLine"),
+                                                 session.string("enrll_mobileNumber"), session.string("enrll_telephoneNumber"), session.string("enrll_email"),
+                                                 session.string("grdn_firstName"), session.string("grdn_midName"), session.string("grdn_lastName"), 
+                                                 session.string("grdn_suffixName"), session.string("grdn_sex"), session.string("grdn_relation"),
+                                                 session.string("grdn_address"), session.string("grdn_mobileNumber"), session.string("grdn_telephoneNumber"), 
+                                                 session.string("grdn_email")
+                                              };
+
+            if (session.string("stu_type") == "oldStu" || session.string("stu_type") == "shiftee")
+            {
+				columns.push_back("student_number");
+				values.push_back(session.string("student_number"));
+			}
+
+            if (session.string("stu_lvl") == "shs" || session.string("stu_lvl") == "college")
+			{ 
+            	columns.push_back("enrll_program");
+                values.push_back(session.string("enrll_program"));
+            }
+
+            if (EnrollMeDb.openDB())
+            {
+                if (!EnrollMeDb.executeInsert(tableName, columns, values))
+                {
+					std::cout << "Error inserting data to Database.\n";
+				}
+            }
+            else {
+                std::cerr << "Failed to open the database." << std::endl;
+            }
+            EnrollMeDb.closeDB();
+
+            session.set("enrll_transactionId", TRANSACTION_ID);
+
+            if (session.string("stu_type") == "shiftee" || session.string("stu_type") == "transferee")
+            {
+                res.redirect("/enroll/college/courses/shiftran");
+            }
+            else if (session.string("stu_type") == "freshmen")
+            {
+                res.redirect("/enroll/college/courses/freshmen");
+            }
+            else if (session.string("stu_type") == "oldStu")
+            {
+                res.redirect("/enroll/college/courses/oldStu");
+            }
+            else
+            {
+				res.redirect("/enroll/summary");
+			}
+            return res;
+        }
+    );
+}
+
 void Enroll::EnrollSummary(crow::App<crow::CookieParser, Session>& thisapp)
 {
     CROW_ROUTE(thisapp, "/enroll/summary").methods(crow::HTTPMethod::GET)(

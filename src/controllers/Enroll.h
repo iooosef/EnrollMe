@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <iomanip>
+#include <random>
 
 #include <crow.h>
 #include "../include/crow/middlewares/session.h"
@@ -31,6 +33,9 @@ class Enroll
 		void EnrollFormPOST(crow::App<crow::CookieParser, Session>& thisapp);
 		// POST ROUTES
 		void EnrollSummary(crow::App<crow::CookieParser, Session>& thisapp);
+		
+		// DB ROUTES
+		void EnrollInsert(crow::App<crow::CookieParser, Session>& thisapp);
 
 		// HTMX ROUTES
 		void testHTMX(crow::App<crow::CookieParser, Session>& thisapp);
