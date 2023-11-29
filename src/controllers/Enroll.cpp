@@ -37,6 +37,8 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
     testHTMX(thisapp);
     getNationalities(thisapp);
     getCountries(thisapp);
+    getCourses(thisapp);
+    getCoursesSummary(thisapp);
 }
 
 
@@ -524,6 +526,147 @@ void Enroll::getCountries(crow::App<crow::CookieParser, Session>& thisapp)
 		});
 }
 
+void Enroll::getCourses(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/getCourses").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+			crow::response res;
+            Database CoursesDb("./data/EnrollMe.db");
+            auto& session = thisapp.get_context<Session>(req);
+            const std::string stu_program = session.string("enrll_program");
+            const std::string stu_number = session.string("student_number");
+			std::string checkboxes = "";
+            
+            std::string eligibleCoursesQuery = "SELECT * FROM tbl_curriculum WHERE"
+                                               "("
+                                               "  ("
+                                               "    (curriculum LIKE '" + stu_program + "%' OR curriculum = 'GenEd')"
+                                               "    AND prerequisite = ''"
+                                               "  )"
+                                               "  AND course_code NOT IN"
+                                               "    ("
+                                               "      SELECT course_code FROM tbl_course_history WHERE "
+                                               "      tbl_course_history.student_number = '" + stu_number + "' AND tbl_course_history.remarks = 'PASSED'"
+                                               "    )"
+                                               ") OR"
+                                               "("
+                                               "  ("
+                                               "    (curriculum LIKE '" + stu_program + "%' OR curriculum = 'GenEd')"
+                                               "    AND prerequisite IN"
+                                               "    ("
+                                               "      SELECT course_code FROM tbl_course_history WHERE "
+                                               "      tbl_course_history.student_number = '" + stu_number + "' AND tbl_course_history.remarks = 'PASSED'"
+                                               "    )"
+                                               "  )"
+                                               "  AND course_code NOT IN"
+                                               "    ("
+                                               "      SELECT course_code FROM tbl_course_history WHERE "
+                                               "      tbl_course_history.student_number = '" + stu_number + "' AND tbl_course_history.remarks = 'PASSED'"
+                                               "    )"
+                                               ") LIMIT 16";
+
+            if (CoursesDb.openDB())
+            {
+				std::vector<std::vector<std::string>> results = CoursesDb.executeSelect(eligibleCoursesQuery);
+                if (results.empty())
+                {
+					std::cout << "No results found.\n";
+				}
+                CoursesDb.closeDB();
+
+                for (const auto& row : results)
+                {
+                    std::cout << row[2] << " prereq: " << row[6] << std::endl;
+                    int units = std::atoi(row[4].c_str()) + std::atoi(row[5].c_str());
+                    std::string unit_str = std::to_string(units);
+
+                    checkboxes = checkboxes + "<div class=\"checkbox-wrapper-16 w-100\">"
+                                  "<label class=\"checkbox-wrapper w-100\">"
+                                  "<input type=\"checkbox\" name=\"course\" value=\"" + row[2] + "\" class=\"checkbox-input\""
+                                  "data-units=\"" + unit_str + "\" data-coreq=\"" + row[7] + "\"/>"
+                                  "<span class=\"checkbox-tile\">"
+                                  "<span class=\"checkbox-label\">" + row[2] + " - " + row[3] + " (" + unit_str + " units)" + "</span>"
+                                  "</span>"
+                                  "</label>"
+                                  "</div>";
+                }
+			}
+            res.body = checkboxes;
+			res.set_header("Content-Type", "text/html");
+			return res;
+		});
+}
+
+void Enroll::getCoursesSummary(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/hxgetCourses").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+            crow::response res;
+            Database CoursesDb("./data/EnrollMe.db");
+            auto& session = thisapp.get_context<Session>(req); 
+
+            if (session.string("stu_lvl") != "college")
+            {
+				res.body = "";
+				res.set_header("Content-Type", "text/html");
+				return res;
+			}
+
+            const std::string courses = session.string("courses");
+
+            std::vector<std::string> course_codes;
+            std::string course_code = "";
+            for (const auto& c : courses)
+            {
+                if (c == ',')
+                {
+					course_codes.push_back(course_code);
+					course_code = "";
+				}
+                else
+                {
+					course_code += c;
+				}
+			}
+
+            std::string coursesSummary = "";
+			std::string query = "SELECT * FROM tbl_curriculum WHERE course_code = ";
+            if (CoursesDb.openDB())
+            {
+                for (const auto& code : course_codes)
+                {
+					std::vector<std::vector<std::string>> results = CoursesDb.executeSelect(query + "'" + code + "';");
+                    for (const auto& row : results)
+                    {
+
+                        int units = std::atoi(row[4].c_str()) + std::atoi(row[5].c_str());
+                        std::string unit_str = std::to_string(units);
+
+                        coursesSummary = coursesSummary + "<table cellpadding=\"0\" cellspacing=\"0\" class=\"col\">"
+								  "<tbody>"
+								  "<tr class=\"heading\">"
+								  "<td class=\"col-2 text-start\">Course Code</td>"
+								  "<td class=\"col-9 text-center\">Course Title</td>"
+								  "<td class=\"col-1 text-end\">Units</td>"
+								  "</tr>"
+								  "<tr class=\"details\">"
+								  "<td class=\"text-start\">" + row[2] + "</td>"
+								  "<td class=\"text-center\">" + row[3] + "</td>"
+								  "<td class=\"text-end\">" + unit_str + "</td>"
+								  "</tr>"
+								  "</tbody>"
+								  "</table>";
+
+
+					}
+				}
+			}
+			res.body = coursesSummary;
+			res.set_header("Content-Type", "text/html");
+			return res;
+        }
+    );
+}
 
 // MISC METHODS
 

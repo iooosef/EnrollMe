@@ -37,6 +37,7 @@ class Enroll
 
 		void CoursesForm(crow::App<crow::CookieParser, Session>& thisapp);
 		void CoursesFormPOST(crow::App<crow::CookieParser, Session>& thisapp);
+
 		void EnrollSummary(crow::App<crow::CookieParser, Session>& thisapp);
 		
 		// DB ROUTES
@@ -46,6 +47,8 @@ class Enroll
 		void testHTMX(crow::App<crow::CookieParser, Session>& thisapp);
 		void getNationalities(crow::App<crow::CookieParser, Session>& thisapp);
 		void getCountries(crow::App<crow::CookieParser, Session>& thisapp);
+		void getCourses(crow::App<crow::CookieParser, Session>& thisapp);
+		void getCoursesSummary(crow::App<crow::CookieParser, Session>& thisapp);
 
 		// MISC FUNCTIONS
 		void ClearSession(crow::App<crow::CookieParser, Session>& thisapp, const crow::request& req);
