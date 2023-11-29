@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EnrollMe</title>
+    <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/css/index.css" rel="stylesheet" />
+    <script src="../static/lib/htmx/htmx.min.js"></script>
+</head>
+<body class="d-flex h-100">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0">EnrollMe</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link fw-bold py-1 px-0" href="/EnrollNow">Enroll Now</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="px-3 py-5 d-flex justify-content-center">
+            <div class="col-8">
+                <h2 class="mb-1">Confirmation</h2> <br />
+                <h5>Are the information entered below, correct?</h5>
+
+                <hr class="my-4">
+
+                <form class="needs-validation" name="registration" autocomplete="off">
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+                            <label for="enrll-firstName" class="form-label">First name</label>
+                            <input type="text" value="{{enrll_firstName}}" name="enrll_firstName" class="form-control" id="enrll-firstName" disabled>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="enrll-middleName" class="form-label">Middle name</label>
+                            <input type="text" value="{{enrll_midName}}" name="enrll_midName" class="form-control" id="enrll-middleName" disabled>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="enrll-lastName" class="form-label">Last name</label>
+                            <input type="text" value="{{enrll_lastName}}" name="enrll_lastName" class="form-control" id="enrll-lastName" disabled>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label for="extName" class="form-label">Extension</label>
+                            <input type="text" value="{{enrll_suffixName}}" name="enrll_suffixName" class="form-control" id="extName" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-sex" class="form-label">Sex</label>
+                            <input type="text" value="{{enrll_sex}}" name="enrll_sex" class="form-control" id="enrll-sex" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-DoB" class="form-label">Date of Birth</label>
+                            <input type="text" value="{{enrll_DoB}}" name="enrll_DoB" class="form-control" id="enrll-DoB" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-PoB" class="form-label">Place of Birth</label>
+                            <input type="text" value="{{enrll_PoB}}" name="enrll_PoB" class="form-control" id="enrll-PoB" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-religion" class="form-label">Religion</label>
+                            <input type="text" value="{{enrll_religion}}" name="enrll_religion" class="form-control" id="enrll-religion" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-nationality" class="form-label" id="testing">Nationality</label>
+                            <input type="text" value="{{enrll_nationality}}" name="enrll_nationality" class="form-control" id="enrll-nationality" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-civilStatus" class="form-label">Civil Status</label>
+                            <input type="text" value="{{enrll_civilStatus}}" name="enrll_civilStatus" class="form-control" id="enrll-civilStatus" disabled>
+                        </div>
+
+                        <hr class="mt-5">
+
+                        <div class="col-md-6">
+                            <label for="enrll-country" class="form-label">Country</label>
+                            <input type="text" value="{{enrll_country}}" name="enrll_country" class="form-control" id="enrll-country" disabled>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="enrll-province" class="form-label">Province</label>
+                            <input type="text" value="{{enrll_province}}" name="enrll_province" class="form-control" id="enrll-province" disabled>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="enrll-cityMun" class="form-label">City/Municipality</label>
+                            <input type="text" value="{{enrll_cityMun}}" name="enrll_cityMun" class="form-control" id="enrll-cityMun" disabled>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="enrll-brgy" class="form-label">Barangay</label>
+                            <input type="text" value="{{enrll_brgy}}" name="enrll_brgy" class="form-control" id="enrll-brgy" disabled>
+                        </div>
+
+                        <div class="col-md-10">
+                            <label for="enrll-addrLine" class="form-label">Address Line</label>
+                            <input type="text" value="{{enrll_addrLine}}" name="enrll_addrLine" class="form-control" id="enrll-addrLine" disabled>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label for="enrll-zipCode" class="form-label">Zip Code</label>
+                            <input type="text" value="{{enrll_zipCode}}" name="enrll_zipCode" class="form-control" id="enrll-zipCode" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-mobileNumber" class="form-label">Mobile Number</label>
+                            <input type="tel" value="{{enrll_mobileNumber}}" name="enrll_mobileNumber" class="form-control" id="enrll-mobileNumber" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-telephoneNumber" class="form-label">Telephone Number</label>
+                            <input type="tel" value="{{enrll_telephoneNumber}}" name="enrll_telephoneNumber" class="form-control" id="enrll-telephoneNumber" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="enrll-email" class="form-label">Email</label>
+                            <input type="email" value="{{enrll_email}}" name="enrll_email" class="form-control" id="enrll-email" disabled>
+                        </div>
+
+                        <hr class="mt-5">
+
+                        <h4 class="mb-3">Guardian's Information</h4>
+
+                        <div class="col-md-4">
+                            <label for="grdn-firstName" class="form-label">First name</label>
+                            <input type="text" value="{{grdn_firstName}}" name="grdn_firstName" class="form-control" id="grdn-firstName" disabled>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="grdn-middleName" class="form-label">Middle name</label>
+                            <input type="text" value="{{grdn_midName}}" name="grdn_midName" class="form-control" id="grdn-middleName" disabled>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="grdn-lastName" class="form-label">Last name</label>
+                            <input type="text" value="{{grdn_lastName}}" name="grdn_lastName" class="form-control" id="grdn-lastName" disabled>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label for="extName" class="form-label">Extension</label>
+                            <input type="text" value="{{grdn_suffixName}}" name="grdn_suffixName" class="form-control" id="extName" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="grdn-sex" class="form-label">Sex</label>
+                            <input type="text" value="{{enrll_sex}}" name="enrll_sex" class="form-control" id="enrll-sex" disabled>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="grdn-relation" class="form-label">Relation to Enrollee</label>
+                            <input type="text" value="{{grdn_relation}}" name="grdn_relation" class="form-control" id="grdn-relation" disabled>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="grdn-address" class="form-label">Full Address</label>
+                            <input type="text" value="{{grdn_address}}" name="grdn_address" class="form-control" id="grdn-address" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="grdn-mobileNumber" class="form-label">Mobile Number</label>
+                            <input type="text" value="{{grdn_mobileNumber}}" name="grdn_mobileNumber" class="form-control" id="grdn-mobileNumber" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="grdn-telephoneNumber" class="form-label">Telephone Number</label>
+                            <input type="text" value="{{grdn_telephoneNumber}}" name="grdn_telephoneNumber" class="form-control" id="grdn-telephoneNumber" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="grdn-email" class="form-label">Email</label>
+                            <input type="email" value="{{grdn_email}}" name="grdn_email" class="form-control" id="grdn-email" disabled>
+                        </div>
+
+                        <hr class="mt-5">
+
+                        <div class="d-grid gap-2">
+                            <a href="/enroll/dbInsert" class="btn btn-outline-primary">Yes</a>
+                            <a href="/enroll/form" class="btn btn-outline-secondary">No</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="mt-auto text-black-50 text-center">
+            <p>© 2023 Technological Institute of the Philippines - Quezon City - ITE001 CS11S2 - Group 8. <a href="https://github.com/iooosef/EnrollMe" class="text-black">EnrollMe</a> is released under the GNU GPL-2.0 license.</p>
+        </footer>
+    </div>
+
+    <script src="../static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+</body>
+</html>
