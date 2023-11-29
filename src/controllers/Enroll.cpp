@@ -428,10 +428,10 @@ void Enroll::EnrollSummary(crow::App<crow::CookieParser, Session>& thisapp)
             auto page = crow::mustache::load("EnrollSummary.html");
             auto& session = thisapp.get_context<Session>(req);
             const std::string stu_type = (session.string("stu_type") == "oldStu") ? "old student" 
-                                        : (session.string("stu_type") == "newStu") ? "new student" : "";
+                                        : (session.string("stu_type") == "newStu") ? "new student" : session.string("stu_type");
             const std::string stu_lvl = (session.string("stu_lvl") == "elem") ? "elementary"
                                         : (session.string("stu_lvl") == "jhs") ? "junior high school"
-                                        : (session.string("stu_lvl") == "shs") ? "senior high school" : "";
+                                        : (session.string("stu_lvl") == "shs") ? "senior high school" : "college";
             const std::string stu_number = session.string("student_number");
             const std::string stu_program = session.string("enrll_program");
             const std::string SCHOOL_YEAR = "2023-2024";
