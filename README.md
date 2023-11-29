@@ -11,8 +11,9 @@ In partial fulfillment of academic requirements in ITE 001
 * [Git](https://git-scm.com/downloads)
 * [Vcpkg](https://github.com/microsoft/vcpkg)
 * [CrowCpp](https://github.com/CrowCpp/Crow)
-* [SQLite ORM](https://github.com/fnc12/sqlite_orm)
+* [SQLite](https://www.sqlite.org/cintro.html)
 * [htmx](https://github.com/bigskysoftware/htmx)
+* [Bootstrap](https://getbootstrap.com/)
 
 ## Setup
 
@@ -22,7 +23,6 @@ In partial fulfillment of academic requirements in ITE 001
 Install **Visual Studio 2019 *(or later versions)***
 Include the ff. Workloads:
 * Desktop Development with C++
-* Linux Development with C++
 
 ### Git
 *[Click for instructions in installing Git](https://phoenixnap.com/kb/how-to-install-git-windows)*
