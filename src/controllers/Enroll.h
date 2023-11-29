@@ -30,6 +30,7 @@ class Enroll
 		void EnrollForm(crow::App<crow::CookieParser, Session>& thisapp);
 		void EnrollFormPOST(crow::App<crow::CookieParser, Session>& thisapp);
 		// POST ROUTES
+		void EnrollSummary(crow::App<crow::CookieParser, Session>& thisapp);
 
 		// HTMX ROUTES
 		void testHTMX(crow::App<crow::CookieParser, Session>& thisapp);

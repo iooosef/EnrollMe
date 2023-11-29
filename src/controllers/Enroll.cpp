@@ -23,6 +23,7 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
     StuType_TranShft(thisapp);
     StuType_OldStu(thisapp);
 
+    EnrollSummary(thisapp);
     testHTMX(thisapp);
     getNationalities(thisapp);
     getCountries(thisapp);
@@ -203,6 +204,44 @@ void Enroll::EnrollFormPOST(crow::App<crow::CookieParser, Session>& thisapp)
             page.body = "<h1>POST</h1> <br/>" + str;
             page.set_header("Content-Type", "text/html");
             return page;
+void Enroll::EnrollSummary(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/summary").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+            auto page = crow::mustache::load("EnrollSummary.html");
+            auto& session = thisapp.get_context<Session>(req);
+            const std::string stu_type = (session.string("stu_type") == "oldStu") ? "old student" 
+                                        : (session.string("stu_type") == "newStu") ? "new student" : "";
+            const std::string stu_lvl = (session.string("stu_lvl") == "elem") ? "elementary"
+                                        : (session.string("stu_lvl") == "jhs") ? "junior high school"
+                                        : (session.string("stu_lvl") == "shs") ? "senior high school" : "";
+            const std::string stu_number = session.string("student_number");
+            const std::string stu_program = session.string("enrll_program");
+            const std::string SCHOOL_YEAR = "2023-2024";
+            const std::string SEMESTER = "1";
+            crow::json::wvalue mustacheMappings;
+            std::string fields[32] = { "enrll_transactionId", "enrll_firstName", "enrll_midName", "enrll_lastName", "enrll_suffixName",
+                                      "enrll_sex", "enrll_DoB", "enrll_PoB", "enrll_religion", "enrll_nationality", "enrll_civilStatus",
+                                      "enrll_country", "enrll_province", "enrll_cityMun", "enrll_brgy", "enrll_zipCode", "enrll_addrLine",
+                                      "enrll_mobileNumber", "enrll_telephoneNumber", "enrll_email",
+                                      "grdn_firstName", "grdn_midName", "grdn_lastName", "grdn_suffixName", "grdn_sex", "grdn_relation",
+                                      "grdn_address", "grdn_mobileNumber", "grdn_telephoneNumber", "grdn_email"
+            };
+
+
+            for (int x = 0; x < 30; x++) {
+                mustacheMappings[fields[x]] = session.get(fields[x], "");
+            }
+            mustacheMappings["student_number"] = stu_number;
+            mustacheMappings["enrll_schoolYear"] = SCHOOL_YEAR;
+            mustacheMappings["enrll_semester"] = SEMESTER;
+            mustacheMappings["enrll_type"] = stu_type;
+            mustacheMappings["enrll_level"] = stu_lvl;
+            mustacheMappings["enrll_program"] = stu_program;
+
+
+            crow::mustache::context ctx(mustacheMappings);
+            return page.render(ctx);
         });
 }
 
