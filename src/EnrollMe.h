@@ -7,6 +7,7 @@
 
 #include <crow.h>
 #include <crow/middlewares/session.h>
+#include "data/Database.h"
 #include "controllers/Home.h"
 #include "controllers/Enroll.h"
 #include "controllers/Logging.h"
