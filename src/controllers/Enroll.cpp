@@ -29,6 +29,8 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
     StuType_OldStu(thisapp);
 
     EnrollSummary(thisapp);
+    CoursesForm(thisapp);
+    CoursesFormPOST(thisapp);
 
     EnrollInsert(thisapp);
 
@@ -271,6 +273,75 @@ void Enroll::EnrollFormPOST(crow::App<crow::CookieParser, Session>& thisapp)
 
             crow::mustache::context ctx (mustacheMappings);
             return page.render(ctx);
+        });
+}
+
+void Enroll::CoursesForm(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/courses").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+			crow::response page(200);
+			auto& session = thisapp.get_context<Session>(req);
+			std::string stu_type = session.string("stu_type");
+			std::string stu_lvl = session.string("stu_lvl");
+			std::string stu_program = session.string("enrll_program");
+            if (stu_type == "shiftee" || stu_type == "transferee") {
+				page.set_static_file_info("templates/CoursesForm-ReToRegistrar.html");
+			}
+            else{
+				page.set_static_file_info("templates/CoursesForm.html");
+			}
+			page.set_header("Content-Type", "text/html");
+			return page;
+		});
+}
+void Enroll::CoursesFormPOST(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/coursesPOST").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+            crow::response res;
+            Database EnrollMeDb("./data/EnrollMe.db");
+            auto& session = thisapp.get_context<Session>(req);
+            auto formSubmission = req.url_params.get_list("course", false);
+            const std::string SCHOOL_YEAR = "2023-2024";
+            const std::string SEMESTER = "1";
+            std::string courses_str = "";
+            std::string course_str;
+
+            std::vector<std::string> columns = { "enrll_transactionId", "student_number", "enrll_program", "enrll_schoolYear", 
+                                                "enrll_type", "enrll_semester", "course_code" };
+            std::vector<std::string> values;
+
+            if (EnrollMeDb.openDB())
+            {
+                for (const auto& course : formSubmission)
+                {
+                    std::cout << course << std::endl;
+                    courses_str += course;
+                    courses_str += ",";
+                    course_str = course;
+                    values = { session.string("enrll_transactionId"), session.string("student_number"), session.string("enrll_program"),
+                                SCHOOL_YEAR, session.string("stu_type"), SEMESTER, course_str };
+                    if (!EnrollMeDb.executeInsert("tbl_college_class_enroll", columns, values))
+                    {
+                        std::cout << "Error inserting data to Database.\n";
+                    }
+                }
+            }
+            else {
+                std::cerr << "Failed to open the database." << std::endl;
+            }
+            EnrollMeDb.closeDB();
+
+
+            if (formSubmission.size() != 0)
+            {
+                courses_str.pop_back();
+			}
+
+            session.set("courses", courses_str);
+            res.redirect("/enroll/summary");
+            return res;
         });
 }
 

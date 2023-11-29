@@ -35,6 +35,8 @@ class Enroll
 		void EnrollForm(crow::App<crow::CookieParser, Session>& thisapp);
 		void EnrollFormPOST(crow::App<crow::CookieParser, Session>& thisapp);
 
+		void CoursesForm(crow::App<crow::CookieParser, Session>& thisapp);
+		void CoursesFormPOST(crow::App<crow::CookieParser, Session>& thisapp);
 		void EnrollSummary(crow::App<crow::CookieParser, Session>& thisapp);
 		
 		// DB ROUTES
