@@ -26,6 +26,7 @@ class Database
 		bool initEnrollMeTables();
 		bool seedTblCurriculum();
 
+		bool executeInsert(const std::string& table, const std::vector<std::string>& columns, const std::vector<std::string>& values);
 		std::vector<std::vector<std::string>> executeSelect(const std::string& query);
 	private:
 		const char* dbName_;

@@ -257,6 +257,33 @@ bool Database::seedTblCurriculum()
 	return true;
 }
 
+bool Database::executeInsert(const std::string& table, const std::vector<std::string>& columns, const std::vector<std::string>& values)
+{
+	if (db_ == nullptr || columns.empty() || values.empty() || columns.size() != values.size()) {
+		return false;
+	}
+	std::string query = "INSERT INTO " + table + " (";
+	for (size_t i = 0; i < columns.size(); ++i) {
+		query += columns[i];
+		if (i < columns.size() - 1) {
+			query += ",";
+		}
+	}
+	query += ") VALUES (";
+	for (size_t i = 0; i < values.size(); ++i) {
+		query += "'" + values[i] + "'";
+		if (i < values.size() - 1) {
+			query += ",";
+		}
+	}
+	query += ");";
+
+	std::cout << std::endl << query << std::endl;
+
+	int result = sqlite3_exec(db_, query.c_str(), nullptr, nullptr, nullptr);
+	return (result == SQLITE_OK);
+}
+
 std::vector<std::vector<std::string>> Database::executeSelect(const std::string& query)
 {
 	std::vector<std::vector<std::string>> result;
