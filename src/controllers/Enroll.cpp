@@ -408,17 +408,9 @@ void Enroll::EnrollInsert(crow::App<crow::CookieParser, Session>& thisapp)
 
             session.set("enrll_transactionId", TRANSACTION_ID);
 
-            if (session.string("stu_type") == "shiftee" || session.string("stu_type") == "transferee")
+            if (session.string("stu_lvl") == "college")
             {
-                res.redirect("/enroll/college/courses/shiftran");
-            }
-            else if (session.string("stu_type") == "freshmen")
-            {
-                res.redirect("/enroll/college/courses/freshmen");
-            }
-            else if (session.string("stu_type") == "oldStu")
-            {
-                res.redirect("/enroll/college/courses/oldStu");
+                res.redirect("/enroll/courses");
             }
             else
             {
