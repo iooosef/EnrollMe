@@ -18,9 +18,6 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
     StuProgram(thisapp);
     StuProgramPOST(thisapp);
 
-    EnrollForm(thisapp);
-    EnrollFormPOST(thisapp);
-
     StuType(thisapp);
     StuType_NewStu(thisapp);
     StuType_Freshmen(thisapp);
@@ -28,11 +25,15 @@ void Enroll::include_routes(crow::App<crow::CookieParser, Session>& thisapp)
     StuType_Shiftee(thisapp);
     StuType_OldStu(thisapp);
 
-    EnrollSummary(thisapp);
+    EnrollForm(thisapp);
+    EnrollFormPOST(thisapp);
+
     CoursesForm(thisapp);
     CoursesFormPOST(thisapp);
 
     EnrollInsert(thisapp);
+
+    EnrollSummary(thisapp);
 
     testHTMX(thisapp);
     getNationalities(thisapp);
@@ -135,7 +136,7 @@ void Enroll::StuProgramPOST(crow::App<crow::CookieParser, Session>& thisapp)
             std::cout << "POST /enroll/program\n";
             auto& session = thisapp.get_context<Session>(req);
             //auto formSubmission = req.get_body_params();
-            session.get("enrll_program", req.url_params.get("enrll_program"));
+            session.set("enrll_program", req.url_params.get("enrll_program"));
             res.redirect("/enroll/type");
             return res;
         });
@@ -242,6 +243,7 @@ void Enroll::EnrollForm(crow::App<crow::CookieParser, Session>& thisapp)
             return page;
         });
 }
+// Confirm Page
 void Enroll::EnrollFormPOST(crow::App<crow::CookieParser, Session>& thisapp)
 {
     CROW_ROUTE(thisapp, "/enroll/form").methods(crow::HTTPMethod::POST)(
