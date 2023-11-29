@@ -133,17 +133,27 @@ void Enroll::StuType_Freshmen(crow::App<crow::CookieParser, Session>& thisapp)
             session.set("stu_type", "freshmen");
             res.redirect("/enroll/form");
             res.end();
+void Enroll::StuType_Transferee(crow::App<crow::CookieParser, Session>& thisapp)
+{
+    CROW_ROUTE(thisapp, "/enroll/type/transferee").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+            crow::response res;
+            auto& session = thisapp.get_context<Session>(req);
+            session.set("stu_type", "transferee");
+            res.redirect("/enroll/form");
+            return res;
         });
 }
 
-void Enroll::StuType_TranShft(crow::App<crow::CookieParser, Session>& thisapp)
+void Enroll::StuType_Shiftee(crow::App<crow::CookieParser, Session>& thisapp)
 {
-    CROW_ROUTE(thisapp, "/enroll/type/tranShft").methods(crow::HTTPMethod::GET)(
-        [&](const crow::request& req, crow::response& res) {
+    CROW_ROUTE(thisapp, "/enroll/type/shiftee").methods(crow::HTTPMethod::GET)(
+        [&](const crow::request& req) {
+            crow::response res;
             auto& session = thisapp.get_context<Session>(req);
-            session.set("stu_type", "tranShft");
+            session.set("stu_type", "shiftee");
             res.redirect("/enroll/form");
-            res.end();
+            return res;
         });
 }
 

@@ -23,7 +23,8 @@ class Enroll
 		void StuType(crow::App<crow::CookieParser, Session>& thisapp);
 		void StuType_NewStu(crow::App<crow::CookieParser, Session>& thisapp);
 		void StuType_Freshmen(crow::App<crow::CookieParser, Session>& thisapp);
-		void StuType_TranShft(crow::App<crow::CookieParser, Session>& thisapp);
+		void StuType_Transferee(crow::App<crow::CookieParser, Session>& thisapp);
+		void StuType_Shiftee(crow::App<crow::CookieParser, Session>& thisapp);
 		void StuType_OldStu(crow::App<crow::CookieParser, Session>& thisapp);
 
 		void EnrollForm(crow::App<crow::CookieParser, Session>& thisapp);
